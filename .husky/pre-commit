@@ -1,0 +1,20 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🔍 Running lint-staged (format, lint, and type-check)..."
+pnpm lint-staged
+
+if [ $? -ne 0 ]; then
+  echo "❌ lint-staged failed. Commit aborted."
+  exit 1
+fi
+
+echo "🏗️  Building project..."
+pnpm build
+
+if [ $? -ne 0 ]; then
+  echo "❌ Build failed. Commit aborted."
+  exit 1
+fi
+
+echo "✅ All checks passed! Committing..."
