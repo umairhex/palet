@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { PaintBucket, TypeIcon, Menu, X, LogIn, Sparkles } from 'lucide-vue-next'
+import { Menu, X } from 'lucide-vue-next'
 import Button from './ui/Button.vue'
+import NavActions from './NavActions.vue'
 
 const isAuthenticated = ref(false)
 const isMobileMenuOpen = ref(false)
@@ -21,24 +22,7 @@ const toggleMobileMenu = () => {
       </div>
 
       <div class="hidden md:flex items-center gap-6">
-        <template v-if="isAuthenticated">
-          <Button variant="ghost" class="gap-2">
-            <PaintBucket />
-            <span>Colors</span>
-          </Button>
-          <Button variant="ghost" class="gap-2">
-            <TypeIcon />
-            <span>Fonts</span>
-          </Button>
-        </template>
-        <template v-else>
-          <Button variant="ghost" class="hover:text-primary">Login</Button>
-          <Button
-            class="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-lg shadow-primary/20"
-          >
-            Get Started for Free
-          </Button>
-        </template>
+        <NavActions :is-authenticated="isAuthenticated" />
       </div>
 
       <div class="md:hidden">
@@ -61,22 +45,7 @@ const toggleMobileMenu = () => {
         v-if="isMobileMenuOpen"
         class="absolute top-full left-0 w-full bg-background border-b border-white/5 md:hidden py-6 px-6 flex flex-col gap-4 shadow-2xl"
       >
-        <template v-if="isAuthenticated">
-          <Button variant="outline" class="w-full justify-start gap-3 py-6">
-            <PaintBucket /> Colors
-          </Button>
-          <Button variant="outline" class="w-full justify-start gap-3 py-6">
-            <TypeIcon /> Fonts
-          </Button>
-        </template>
-        <template v-else>
-          <Button variant="outline" class="w-full justify-start gap-3 py-6 border-white/10">
-            <LogIn class="size-4" /> Login
-          </Button>
-          <Button class="bg-primary w-full justify-start gap-3 py-6 rounded-xl">
-            <Sparkles class="size-4" /> Get Started for Free
-          </Button>
-        </template>
+        <NavActions :is-authenticated="isAuthenticated" :is-mobile="true" />
       </div>
     </Transition>
   </nav>

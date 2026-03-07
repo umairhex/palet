@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 import HeroCard from './Hero/HeroCard.vue'
 import HeroVisual from './Hero/HeroVisual.vue'
+import { HERO_TABS } from '../../constants/landing'
 
-const activeTab = ref('Colours')
-const tabs = ['Colours', 'Fonts', 'Workspace'] as const
+const activeTab = ref<string>(HERO_TABS[0])
 </script>
 
 <template>
@@ -24,7 +24,7 @@ const tabs = ['Colours', 'Fonts', 'Workspace'] as const
         <div class="flex flex-col gap-6">
           <div class="flex gap-8 border-b border-white/10 overflow-x-auto no-scrollbar pb-1">
             <button
-              v-for="tab in tabs"
+              v-for="tab in HERO_TABS"
               :key="tab"
               @click="activeTab = tab"
               class="pb-3 text-base md:text-lg font-semibold transition-all relative whitespace-nowrap"

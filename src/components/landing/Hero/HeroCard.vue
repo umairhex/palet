@@ -1,34 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ArrowRight, PaintBucket, TypeIcon, Layout } from 'lucide-vue-next'
+import { ArrowRight } from 'lucide-vue-next'
 import Button from '../../ui/Button.vue'
+import { HERO_FEATURE_CONFIG } from '../../../constants/landing'
 
 const props = defineProps<{
   activeTab: string
 }>()
 
-const featureConfig = {
-  Colours: {
-    title: 'Colour Palettes',
-    description:
-      'Store, organize, and preview your curated color collections. Access hex codes and visual references instantly from any project.',
-    icon: PaintBucket,
-  },
-  Fonts: {
-    title: 'Font Vault',
-    description:
-      'Upload and manage your custom typefaces. Preview weights and styles directly in the browser before downloading for local use.',
-    icon: TypeIcon,
-  },
-  Workspace: {
-    title: 'Unified Workspace',
-    description:
-      'Your central dashboard for all design assets. A persistent visual reference library that syncs across all your devices.',
-    icon: Layout,
-  },
-}
-
-const config = computed(() => featureConfig[props.activeTab as keyof typeof featureConfig])
+const config = computed(
+  () => HERO_FEATURE_CONFIG[props.activeTab as keyof typeof HERO_FEATURE_CONFIG],
+)
 </script>
 
 <template>

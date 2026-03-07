@@ -1,24 +1,5 @@
 <script setup lang="ts">
-import { BarChart3, PenTool, Code, Building2 } from 'lucide-vue-next'
-
-const audiences = [
-  {
-    icon: BarChart3,
-    label: 'For Marketers',
-  },
-  {
-    icon: PenTool,
-    label: 'For Designers',
-  },
-  {
-    icon: Code,
-    label: 'For Developers',
-  },
-  {
-    icon: Building2,
-    label: 'For Entrepreneurs',
-  },
-]
+import { TARGET_AUDIENCES } from '../../constants/landing'
 </script>
 
 <template>
@@ -32,8 +13,8 @@ const audiences = [
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-20 w-full max-w-5xl">
         <div
-          v-for="(audience, index) in audiences"
-          :key="index"
+          v-for="audience in TARGET_AUDIENCES"
+          :key="audience.label"
           class="flex flex-col items-center gap-4"
         >
           <component :is="audience.icon" class="size-16 md:size-24 text-white stroke-[1.2]" />

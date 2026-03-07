@@ -1,28 +1,12 @@
 <script setup lang="ts">
-const statistics = [
-  {
-    value: '92%',
-    description:
-      'reduction in time spent searching for hex codes and font files across scattered project folders.',
-  },
-  {
-    value: 'Instant',
-    description:
-      'access to frequently used typefaces from any device through a centralized workspace.',
-  },
-  {
-    value: 'Zero',
-    description:
-      'friction when starting new design projects with a pre-saved visual asset library.',
-  },
-]
+import { USAGE_STATISTICS } from '../../constants/landing'
 </script>
 
 <template>
   <section class="w-full bg-white py-32 px-6 md:px-12">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
       <div
-        v-for="(statistic, index) in statistics"
+        v-for="(statistic, index) in USAGE_STATISTICS"
         :key="index"
         class="bg-impact-card rounded-3xl p-12"
       >

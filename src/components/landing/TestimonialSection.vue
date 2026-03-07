@@ -1,32 +1,6 @@
 <script setup lang="ts">
 import { Star } from 'lucide-vue-next'
-
-const testimonials = [
-  {
-    quote:
-      'Palet has completely changed how I manage brand assets. No more digging through Figma files for hex codes.',
-    author: 'Zeeshan Ahmed',
-    role: 'Senior Product Designer',
-    company: 'DesignCo',
-    tags: ['Productivity', 'Brand Design'],
-  },
-  {
-    quote:
-      'The .ttf font vault is a lifesaver. Being able to preview my typography library in the browser is incredible.',
-    author: 'Hamza Malik',
-    role: 'Frontend Developer',
-    company: 'TechFlow',
-    tags: ['Development', 'Typography'],
-  },
-  {
-    quote:
-      "Finally, a centralized place for all my design primitives. It's the first thing I open for every new project.",
-    author: 'Fatima Khan',
-    role: 'Creative Director',
-    company: 'StudioVibe',
-    tags: ['Organization', 'Creative Ops'],
-  },
-]
+import { TESTIMONIALS } from '../../constants/landing'
 </script>
 
 <template>
@@ -37,13 +11,13 @@ const testimonials = [
           class="text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight leading-[1.1]"
         >
           Trusted by the <br />
-          <span class="text-[rgb(99,102,241)]">best in design.</span>
+          <span class="text-indigo-accent">best in design.</span>
         </h2>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div
-          v-for="(testimonial, index) in testimonials"
+          v-for="(testimonial, index) in TESTIMONIALS"
           :key="index"
           class="bg-[#fcfdfe] rounded-[2.5rem] p-10 md:p-14 border border-subtle flex flex-col justify-between"
         >

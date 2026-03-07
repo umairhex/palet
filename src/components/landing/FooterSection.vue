@@ -1,40 +1,11 @@
 <script setup lang="ts">
-const footerNavigation = [
-  {
-    title: 'Product',
-    links: [
-      { name: 'Features', href: '#features' },
-      { name: 'Asset Vault', href: '#vault' },
-      { name: 'Typography', href: '#fonts' },
-      { name: 'Color Systems', href: '#colors' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      { name: 'Documentation', href: '#' },
-      { name: 'Design Guides', href: '#' },
-      { name: 'API Reference', href: '#' },
-      { name: 'Community', href: '#' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { name: 'About Us', href: '#' },
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' },
-      { name: 'Contact Support', href: '#' },
-    ],
-  },
-]
+import { FOOTER_NAVIGATION, LEGAL_LINKS } from '../../constants/landing'
 </script>
 
 <template>
   <footer class="w-full bg-white border-t border-lighter pt-28 pb-14 px-6 md:px-12">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-28">
-        <!-- Brand Info -->
         <div class="lg:col-span-12 xl:col-span-4 space-y-12">
           <div class="flex items-center cursor-pointer group">
             <h1
@@ -52,7 +23,7 @@ const footerNavigation = [
 
         <div class="lg:col-span-12 xl:col-span-8">
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
-            <div v-for="group in footerNavigation" :key="group.title" class="space-y-10">
+            <div v-for="group in FOOTER_NAVIGATION" :key="group.title" class="space-y-10">
               <h4
                 class="text-sm font-black uppercase tracking-[0.4em] text-foreground relative inline-block"
               >
@@ -98,9 +69,14 @@ const footerNavigation = [
         <div
           class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-8 md:gap-x-12 gap-y-6 font-medium uppercase tracking-[0.25em] text-muted-foreground-subtle text-center"
         >
-          <a href="#" class="hover:text-foreground transition-colors">Privacy Policy</a>
-          <a href="#" class="hover:text-foreground transition-colors">Terms</a>
-          <a href="#" class="hover:text-foreground transition-colors">Cookie Policy</a>
+          <a
+            v-for="link in LEGAL_LINKS"
+            :key="link.name"
+            :href="link.href"
+            class="hover:text-foreground transition-colors"
+          >
+            {{ link.name }}
+          </a>
         </div>
       </div>
     </div>

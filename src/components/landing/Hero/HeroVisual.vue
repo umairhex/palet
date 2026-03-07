@@ -29,7 +29,3 @@
     </div>
   </div>
 </template>
-
-<style scoped>
-/* Scoped styles removed as animations are no longer needed */
-</style>
