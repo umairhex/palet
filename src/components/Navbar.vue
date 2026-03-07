@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { PaintBucket, TypeIcon, Menu, X, LogIn, UserPlus } from 'lucide-vue-next'
+import { PaintBucket, TypeIcon, Menu, X, LogIn, Sparkles } from 'lucide-vue-next'
 import Button from './ui/Button.vue'
 
 const isAuthenticated = ref(false)
@@ -32,11 +32,11 @@ const toggleMobileMenu = () => {
           </Button>
         </template>
         <template v-else>
-          <Button variant="ghost" class="hover:text-primary">Login</Button>
+          <Button variant="ghost" class="hover:text-primary">Login to Sync</Button>
           <Button
             class="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-lg shadow-primary/20"
           >
-            Register
+            Get Started for Free
           </Button>
         </template>
       </div>
@@ -71,10 +71,10 @@ const toggleMobileMenu = () => {
         </template>
         <template v-else>
           <Button variant="outline" class="w-full justify-start gap-3 py-6 border-white/10">
-            <LogIn class="size-4" /> Login
+            <LogIn class="size-4" /> Login to Sync
           </Button>
           <Button class="bg-primary w-full justify-start gap-3 py-6 rounded-xl">
-            <UserPlus class="size-4" /> Get Started
+            <Sparkles class="size-4" /> Get Started for Free
           </Button>
         </template>
       </div>

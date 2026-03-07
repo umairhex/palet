@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, UserPlus } from 'lucide-vue-next'
+import { ArrowRight } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -22,28 +22,27 @@ import { ArrowRight, UserPlus } from 'lucide-vue-next'
     <div class="max-w-4xl mx-auto text-center relative z-10 space-y-12">
       <div class="space-y-6">
         <h2
-          class="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-none mb-4"
+          class="text-5xl md:text-7xl lg:text-8xl font-medium text-white tracking-tight leading-none mb-4"
         >
           Ready to <span class="text-emerald-accent">curate?</span>
         </h2>
-        <p class="text-xl md:text-2xl text-white/50 leading-relaxed max-w-2xl mx-auto font-medium">
+        <p class="text-xl md:text-2xl text-white/50 leading-relaxed max-w-2xl mx-auto">
           Whether you're starting a new brand or organizing a legacy project, Palet is the home for
-          your design identity.
+          your design identity. Start instantly, for free, without an account.
         </p>
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
         <button
-          class="w-full sm:w-auto flex items-center justify-center gap-3 bg-white text-slate-900 px-12 py-6 rounded-full font-black text-lg transition-all hover:bg-emerald-500 hover:text-white hover:scale-105 active:scale-95 shadow-2xl shadow-emerald-500/20 group"
+          class="w-full sm:w-auto flex items-center justify-center gap-3 bg-white text-slate-900 px-12 py-6 rounded-full text-lg transition-all hover:bg-emerald-500 hover:text-white hover:scale-105 active:scale-95 shadow-2xl shadow-emerald-500/20 group"
         >
-          <UserPlus class="size-6" />
-          Get Started Now
+          Start For Free
           <ArrowRight class="size-6 transition-transform group-hover:translate-x-1" />
         </button>
         <button
-          class="w-full sm:w-auto text-white/40 hover:text-white transition-colors text-lg font-bold tracking-tight"
+          class="w-full sm:w-auto text-white/40 hover:text-white transition-colors text-lg tracking-tight"
         >
-          Already a member? <span class="text-white ml-2">Login</span>
+          Want to sync your assets? <span class="text-white ml-2">Log In</span>
         </button>
       </div>
     </div>

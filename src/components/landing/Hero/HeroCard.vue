@@ -37,7 +37,7 @@ const config = computed(() => featureConfig[props.activeTab as keyof typeof feat
   >
     <div class="flex items-center gap-3 mb-4">
       <div class="p-1.5 bg-white/10 rounded-lg">
-        <component :is="config.icon" class="size-6 text-primary" />
+        <component :is="config.icon" class="size-6 text-white" />
       </div>
       <h3 class="text-xl md:text-2xl font-semibold tracking-tight">
         {{ config.title }}
@@ -55,10 +55,13 @@ const config = computed(() => featureConfig[props.activeTab as keyof typeof feat
         {{ props.activeTab === 'Workspace' ? 'Go to Dashboard' : 'Start Building' }}
         <ArrowRight class="size-4" />
       </Button>
-      <button class="text-white/60 text-sm font-semibold flex items-center gap-2">
-        View Features
-        <ArrowRight class="size-4" />
-      </button>
+      <div class="flex flex-col gap-1.5 items-start">
+        <button class="text-white/60 text-sm font-semibold flex items-center gap-2">
+          View Features
+          <ArrowRight class="size-4" />
+        </button>
+        <span class="text-white/40 text-xs mt-0.5">No login required to start</span>
+      </div>
     </div>
   </div>
 </template>

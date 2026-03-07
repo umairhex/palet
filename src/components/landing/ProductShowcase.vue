@@ -10,7 +10,7 @@ const products: ProductProps[] = [
       'A Personal Design Asset Vault for <br class="hidden md:block" /> Your Colors and Typography',
     description:
       'Centralize scattered assets into a single organized workspace. A permanent visual reference library that removes friction from starting new work.',
-    features: ['Persistent Cloud Storage', 'Accessible Across Devices'],
+    features: ['Optional Cloud Sync', 'Accessible Across Devices'],
     image: {
       src: 'https://images.unsplash.com/photo-1643485839726-c9d4fac1c9bd?q=80&w=876&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       alt: 'Workspace Dashboard',

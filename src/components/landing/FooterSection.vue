@@ -89,10 +89,6 @@ const footerNavigation = [
               >Umair Hex</a
             >
           </div>
-          <span class="size-1.5 rounded-full bg-black/10"></span>
-          <span class="text-[10px] uppercase font-bold tracking-[0.2em] opacity-30"
-            >Inspired by Designmodo</span
-          >
         </div>
 
         <div

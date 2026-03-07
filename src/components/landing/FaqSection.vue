@@ -30,7 +30,13 @@ const faqs = ref([
   {
     question: 'Are my design assets accessible across devices?',
     answer:
-      'Absolutely. Palet uses <strong>persistent cloud storage</strong>, ensuring that once you log in, your entire library of palettes and fonts is instantly available on any device or session.',
+      'Yes. While Palet works completely without an account on your current device, you can optionally create a free account to use our <strong>persistent cloud storage</strong>. Logging in ensures your entire library of palettes and fonts syncs instantly across any device or session.',
+    isOpen: false,
+  },
+  {
+    question: 'Is Palet free to use?',
+    answer:
+      'Yes, entirely free! All core features are accessible immediately without paying or even signing up. Accounts are optional and only used for cross-device syncing.',
     isOpen: false,
   },
 ])
