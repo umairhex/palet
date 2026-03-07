@@ -5,7 +5,7 @@ import ProductCard, { type ProductProps } from './ProductCard.vue'
 const products: ProductProps[] = [
   {
     variant: 'hero',
-    badge: { text: 'Unified Workspace', icon: Layout, colorClass: 'bg-emerald-500' },
+    badge: { text: 'Unified Workspace', icon: Layout, colorClass: 'bg-emerald-accent' },
     title:
       'A Personal Design Asset Vault for <br class="hidden md:block" /> Your Colors and Typography',
     description:
@@ -18,17 +18,17 @@ const products: ProductProps[] = [
     },
     gradientFrom: '#f0f9f4',
     gradientTo: '#f2f8f5',
-    borderColor: 'border-emerald-500/10',
+    borderColor: 'border-emerald-accent/10',
     primaryBtn: {
       text: 'Enter Vault',
-      colorClass: 'bg-emerald-500',
-      shadowClass: 'shadow-lg shadow-emerald-500/20',
+      colorClass: 'bg-emerald-accent',
+      shadowClass: 'shadow-lg shadow-emerald-accent/20',
     },
     secondaryBtn: true,
   },
   {
     variant: 'side',
-    badge: { text: 'Palette Library', icon: Palette, colorClass: 'bg-blue-500' },
+    badge: { text: 'Palette Library', icon: Palette, colorClass: 'bg-blue-accent' },
     title: 'Create & Store Multiple <br /> Project Color Systems',
     description:
       'Add colors using hex or visual selection. Organize palettes by brand and copy codes instantly for development.',
@@ -40,17 +40,17 @@ const products: ProductProps[] = [
     },
     gradientFrom: '#f0f4f9',
     gradientTo: '#edf2f7',
-    borderColor: 'border-blue-500/10',
+    borderColor: 'border-blue-accent/10',
     primaryBtn: {
       text: 'Browse Palettes',
-      colorClass: 'bg-blue-500',
-      shadowClass: 'shadow-lg shadow-blue-500/20',
+      colorClass: 'bg-blue-accent',
+      shadowClass: 'shadow-lg shadow-blue-accent/20',
     },
     secondaryBtn: true,
   },
   {
     variant: 'side',
-    badge: { text: 'Personalized Font Vault', icon: Type, colorClass: 'bg-purple-500' },
+    badge: { text: 'Personalized Font Vault', icon: Type, colorClass: 'bg-purple-accent' },
     title: 'Upload & Preview Your <br /> Favorite Typefaces',
     description:
       'Upload .ttf files directly. Maintain a personal library of frequently used fonts with automatic visual previews.',
@@ -62,11 +62,11 @@ const products: ProductProps[] = [
     },
     gradientFrom: '#f5f0f9',
     gradientTo: '#f0e8f5',
-    borderColor: 'border-purple-500/10',
+    borderColor: 'border-purple-accent/10',
     primaryBtn: {
       text: 'Manage Fonts',
-      colorClass: 'bg-purple-500',
-      shadowClass: 'shadow-lg shadow-purple-500/20',
+      colorClass: 'bg-purple-accent',
+      shadowClass: 'shadow-lg shadow-purple-accent/20',
     },
     secondaryBtn: true,
   },
@@ -76,7 +76,9 @@ const products: ProductProps[] = [
 <template>
   <section class="w-full bg-white pt-16 pb-32 px-6 md:px-12">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-slate-800 leading-tight">
+      <h2
+        class="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground-muted leading-tight"
+      >
         Simple tools for <span class="text-[rgb(99,102,241)]">beautiful</span> workflows.
       </h2>
 

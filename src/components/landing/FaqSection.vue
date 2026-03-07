@@ -51,7 +51,7 @@ const toggleFaq = (index: number) => {
 <template>
   <section class="w-full bg-white pb-32 pt-16 px-6 md:px-12">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-6xl font-bold text-slate-800 mb-16 tracking-tight">FAQ</h2>
+      <h2 class="text-6xl font-bold text-foreground-muted mb-16 tracking-tight">FAQ</h2>
 
       <div class="flex flex-col gap-3">
         <div v-for="(faq, index) in faqs" :key="index" class="transition-all duration-300">
@@ -60,7 +60,7 @@ const toggleFaq = (index: number) => {
             :class="[
               'rounded-xl cursor-pointer transition-all duration-300 border',
               faq.isOpen
-                ? 'bg-white border-slate-200 shadow-sm p-8'
+                ? 'bg-white border-subtle shadow-sm p-8'
                 : 'bg-impact-card border-transparent px-8 py-6',
             ]"
           >
@@ -68,19 +68,19 @@ const toggleFaq = (index: number) => {
               <h3
                 :class="[
                   'text-xl font-bold tracking-tight transition-colors',
-                  faq.isOpen ? 'text-slate-800' : 'text-slate-700',
+                  faq.isOpen ? 'text-foreground-muted' : 'text-foreground-lighter',
                 ]"
               >
                 {{ faq.question }}
               </h3>
               <div class="shrink-0">
-                <X v-if="faq.isOpen" class="size-5 text-slate-400" />
-                <Plus v-else class="size-6 text-slate-400" />
+                <X v-if="faq.isOpen" class="size-5 text-muted-foreground-subtle" />
+                <Plus v-else class="size-6 text-muted-foreground-subtle" />
               </div>
             </div>
 
             <div v-if="faq.isOpen" class="mt-6 animate-in fade-in slide-in-from-top-2 duration-300">
-              <p class="text-slate-500 leading-relaxed text-lg" v-html="faq.answer"></p>
+              <p class="text-muted-foreground leading-relaxed text-lg" v-html="faq.answer"></p>
             </div>
           </div>
         </div>

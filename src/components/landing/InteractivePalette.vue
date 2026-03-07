@@ -39,7 +39,7 @@ const palettes = [
       primary: 'bg-[#6366f1]',
       secondary: 'bg-[#1e293b]',
       bg: 'bg-[#ffffff]',
-      border: 'border-slate-200',
+      border: 'border-subtle',
     },
   },
 ]
@@ -52,15 +52,15 @@ const selectPalette = (palette: (typeof palettes)[0]) => {
 </script>
 
 <template>
-  <section class="w-full bg-impact-card py-32 px-6 md:px-12 text-slate-900 overflow-hidden">
+  <section class="w-full bg-impact-card py-32 px-6 md:px-12 text-foreground overflow-hidden">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
       <div class="space-y-12">
         <div class="space-y-6">
           <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
             Build palettes that <br />
-            <span class="text-emerald-600">actually work.</span>
+            <span class="text-emerald-accent-hover">actually work.</span>
           </h2>
-          <p class="text-slate-500 text-lg md:text-xl leading-relaxed max-w-lg">
+          <p class="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-lg">
             Experiment with combinations instantly. See how your colors transform a real component
             before you commit a single line of code.
           </p>
@@ -68,7 +68,7 @@ const selectPalette = (palette: (typeof palettes)[0]) => {
 
         <!-- Palette Selector -->
         <div class="flex flex-col gap-6">
-          <h4 class="text-sm font-bold uppercase tracking-[0.3em] text-slate-400">
+          <h4 class="text-sm font-bold uppercase tracking-[0.3em] text-muted-foreground-subtle">
             Saved Palettes
           </h4>
           <div class="flex flex-wrap gap-4">
@@ -79,8 +79,8 @@ const selectPalette = (palette: (typeof palettes)[0]) => {
               :class="[
                 'p-4 rounded-3xl border transition-all duration-500 group relative',
                 activePalette?.name === palette.name
-                  ? 'bg-slate-50 border-slate-200 scale-105 shadow-2xl shadow-emerald-500/10'
-                  : 'bg-transparent border-slate-100 hover:bg-slate-50',
+                  ? 'bg-background-muted border-subtle scale-105 shadow-2xl shadow-emerald-accent/10'
+                  : 'bg-transparent border-lighter hover:bg-background-muted',
               ]"
             >
               <div class="flex gap-2">
@@ -92,7 +92,7 @@ const selectPalette = (palette: (typeof palettes)[0]) => {
                 ></div>
               </div>
               <span
-                class="mt-3 block text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors"
+                class="mt-3 block text-xs font-bold uppercase tracking-widest text-muted-foreground-subtle group-hover:text-foreground transition-colors"
               >
                 {{ palette.name }}
               </span>
@@ -119,9 +119,9 @@ const selectPalette = (palette: (typeof palettes)[0]) => {
         <div class="relative space-y-8">
           <div class="flex items-center justify-between">
             <div class="flex gap-2">
-              <div class="size-3 rounded-full bg-red-400"></div>
-              <div class="size-3 rounded-full bg-yellow-400"></div>
-              <div class="size-3 rounded-full bg-green-400"></div>
+              <div class="size-3 rounded-full bg-red-accent"></div>
+              <div class="size-3 rounded-full bg-yellow-accent"></div>
+              <div class="size-3 rounded-full bg-green-accent"></div>
             </div>
           </div>
 
@@ -135,7 +135,7 @@ const selectPalette = (palette: (typeof palettes)[0]) => {
             <h3
               :class="[
                 'text-3xl md:text-5xl font-black leading-tight transition-all duration-500',
-                activePalette.name === 'Modern Crisp' ? 'text-slate-900' : 'text-white',
+                activePalette.name === 'Modern Crisp' ? 'text-foreground' : 'text-white',
               ]"
             >
               Designing with <br />
@@ -144,7 +144,7 @@ const selectPalette = (palette: (typeof palettes)[0]) => {
             <p
               :class="[
                 'text-lg opacity-40 max-w-sm transition-all duration-500',
-                activePalette.name === 'Modern Crisp' ? 'text-slate-700' : 'text-white',
+                activePalette.name === 'Modern Crisp' ? 'text-foreground-lighter' : 'text-white',
               ]"
             >
               Visual asset management is the key primitives of brand identity.
@@ -164,7 +164,7 @@ const selectPalette = (palette: (typeof palettes)[0]) => {
               :class="[
                 'px-8 py-4 rounded-full text-sm border transition-all duration-500',
                 activePalette.name === 'Modern Crisp'
-                  ? 'border-slate-200 text-slate-800'
+                  ? 'border-subtle text-foreground-muted'
                   : 'border-white/10 text-white opacity-40',
               ]"
             >

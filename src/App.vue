@@ -13,7 +13,7 @@ import BottomCTA from './components/landing/BottomCTA.vue'
 import FooterSection from './components/landing/FooterSection.vue'
 </script>
 <template>
-  <div class="min-h-screen bg-dark-green overflow-x-hidden">
+  <div class="min-h-screen bg-background overflow-x-hidden">
     <Navbar />
     <HeroSection />
     <UsageImpact />

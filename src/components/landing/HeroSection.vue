@@ -9,7 +9,7 @@ const tabs = ['Colours', 'Fonts', 'Workspace'] as const
 
 <template>
   <section
-    class="relative w-full min-h-[calc(100vh-80px)] flex items-center px-6 md:px-12 py-18 overflow-hidden"
+    class="relative w-full min-h-[calc(100vh-60px)] flex items-center px-6 md:px-12 py-18 overflow-hidden"
   >
     <div
       class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full"

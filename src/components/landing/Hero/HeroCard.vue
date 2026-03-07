@@ -33,7 +33,7 @@ const config = computed(() => featureConfig[props.activeTab as keyof typeof feat
 
 <template>
   <div
-    class="bg-card-bg rounded-3xl p-8 md:p-10 border border-white/5 shadow-2xl backdrop-blur-sm max-w-lg group"
+    class="bg-background/85 rounded-3xl p-8 md:p-10 border border-white/5 shadow-2xl backdrop-blur-sm max-w-lg group"
   >
     <div class="flex items-center gap-3 mb-4">
       <div class="p-1.5 bg-white/10 rounded-lg">

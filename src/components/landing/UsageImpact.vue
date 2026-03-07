@@ -20,20 +20,20 @@ const statistics = [
 
 <template>
   <section class="w-full bg-white py-32 px-6 md:px-12">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
       <div
         v-for="(statistic, index) in statistics"
         :key="index"
         class="bg-impact-card rounded-3xl p-12"
       >
         <div class="flex items-baseline gap-3 mb-8">
-          <span class="text-6xl font-medium text-slate-800 tracking-tighter">
+          <span class="text-6xl font-medium text-foreground-muted tracking-tighter">
             {{ statistic.value }}
           </span>
         </div>
 
-        <p class="text-lg text-slate-600 leading-relaxed">
-          <span class="text-slate-800 font-bold">
+        <p class="text-lg text-foreground-subtle leading-relaxed">
+          <span class="text-foreground-muted font-bold">
             {{ statistic.description.split(' ')[0] }}
             {{ statistic.description.split(' ')[1] }}
           </span>

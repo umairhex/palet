@@ -3,22 +3,7 @@ import { ArrowRight } from 'lucide-vue-next'
 </script>
 
 <template>
-  <section class="w-full bg-[#0e231c] py-40 px-6 md:px-12 relative overflow-hidden">
-    <!-- Sophisticated Background Pattern -->
-    <div class="absolute inset-0 opacity-[0.03] z-0">
-      <div
-        class="h-full w-full bg-[radial-gradient(circle_at_25%_25%,rgba(255,255,255,0.2)_1px,transparent_0)] bg-size-[40px_40px]"
-      ></div>
-    </div>
-
-    <!-- Glowing Background Elements -->
-    <div
-      class="absolute -top-40 -right-40 size-[600px] bg-emerald-500/10 rounded-full blur-[140px] z-0"
-    ></div>
-    <div
-      class="absolute -bottom-40 -left-40 size-[600px] bg-orange-500/5 rounded-full blur-[140px] z-0"
-    ></div>
-
+  <section class="w-full bg-background py-40 px-6 md:px-12 relative overflow-hidden">
     <div class="max-w-4xl mx-auto text-center relative z-10 space-y-12">
       <div class="space-y-6">
         <h2
@@ -34,7 +19,7 @@ import { ArrowRight } from 'lucide-vue-next'
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
         <button
-          class="w-full sm:w-auto flex items-center justify-center gap-3 bg-white text-slate-900 px-12 py-6 rounded-full text-lg transition-all hover:bg-emerald-500 hover:text-white hover:scale-105 active:scale-95 shadow-2xl shadow-emerald-500/20 group"
+          class="w-full sm:w-auto flex items-center justify-center gap-3 bg-white text-foreground px-12 py-6 rounded-full text-lg transition-all hover:bg-emerald-accent hover:text-white hover:scale-105 active:scale-95 shadow-2xl shadow-emerald-accent/20 group"
         >
           Start For Free
           <ArrowRight class="size-6 transition-transform group-hover:translate-x-1" />

@@ -13,7 +13,7 @@ const toggleMobileMenu = () => {
 
 <template>
   <nav
-    class="sticky top-0 z-50 w-full bg-dark-green border-b border-white/5 text-white px-6 md:px-12 py-4"
+    class="sticky top-0 z-50 w-full bg-background border-b border-white/5 text-white px-6 md:px-12 py-4"
   >
     <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
       <div class="flex items-center cursor-pointer">
@@ -59,7 +59,7 @@ const toggleMobileMenu = () => {
     >
       <div
         v-if="isMobileMenuOpen"
-        class="absolute top-full left-0 w-full bg-dark-green border-b border-white/5 md:hidden py-6 px-6 flex flex-col gap-4 shadow-2xl"
+        class="absolute top-full left-0 w-full bg-background border-b border-white/5 md:hidden py-6 px-6 flex flex-col gap-4 shadow-2xl"
       >
         <template v-if="isAuthenticated">
           <Button variant="outline" class="w-full justify-start gap-3 py-6">

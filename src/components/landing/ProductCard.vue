@@ -65,13 +65,18 @@ withDefaults(defineProps<ProductProps>(), {
 
       <h3
         :class="[
-          'font-semibold text-slate-900 leading-tight ',
+          'font-semibold text-foreground leading-tight ',
           variant === 'hero' ? 'text-3xl md:text-5xl' : 'text-2xl md:text-4xl',
         ]"
         v-html="title"
       ></h3>
 
-      <p :class="['text-slate-700 leading-relaxed', variant === 'hero' ? 'text-lg max-w-md' : '']">
+      <p
+        :class="[
+          'text-foreground-lighter leading-relaxed',
+          variant === 'hero' ? 'text-lg max-w-md' : '',
+        ]"
+      >
         {{ description }}
       </p>
 
@@ -93,7 +98,7 @@ withDefaults(defineProps<ProductProps>(), {
           </div>
           <span
             :class="[
-              'font-semibold text-slate-800 leading-tight',
+              'font-semibold text-foreground-muted leading-tight',
               variant === 'hero' ? 'text-base' : 'text-sm',
             ]"
           >
@@ -119,7 +124,7 @@ withDefaults(defineProps<ProductProps>(), {
         <button
           v-if="secondaryBtn"
           :class="[
-            'rounded-full border border-black/5 font-bold transition-all bg-white/40 hover:bg-white/60 active:scale-95 text-slate-900 shadow-sm',
+            'rounded-full border border-black/5 font-bold transition-all bg-white/40 hover:bg-white/60 active:scale-95 text-foreground shadow-sm',
             variant === 'hero' ? 'px-8 py-4 text-sm' : 'px-6 py-3 text-xs',
           ]"
         >
