@@ -5,10 +5,10 @@
 <template>
   <div class="relative flex flex-col gap-6">
     <div
-      class="relative w-full aspect-square lg:aspect-4/3 rounded-3xl overflow-hidden bg-linear-to-br from-white/5 to-transparent border border-white/10 flex items-center justify-center shadow-2xl"
+      class="relative w-full aspect-square lg:aspect-4/3 rounded-3xl overflow-hidden bg-linear-to-br from-white/5 to-transparent border border-white/10 flex items-center justify-center"
     >
       <div
-        class="absolute inset-4 rounded-2xl bg-ui-dark border border-white/5 overflow-hidden shadow-inner flex items-center justify-center"
+        class="absolute inset-4 rounded-2xl bg-ui-dark border border-white/5 overflow-hidden flex items-center justify-center"
       >
         <img
           src="https://images.unsplash.com/photo-1597526220503-d1915d82e45b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

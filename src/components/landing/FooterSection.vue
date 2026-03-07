@@ -34,7 +34,15 @@ import { FOOTER_NAVIGATION, LEGAL_LINKS } from '../../constants/landing'
               </h4>
               <ul class="space-y-6">
                 <li v-for="link in group.links" :key="link.name">
+                  <RouterLink
+                    v-if="link.href.startsWith('/')"
+                    :to="link.href"
+                    class="text-lg text-muted-foreground hover:text-emerald-accent-hover transition-colors duration-300 tracking-tight"
+                  >
+                    {{ link.name }}
+                  </RouterLink>
                   <a
+                    v-else
                     :href="link.href"
                     class="text-lg text-muted-foreground hover:text-emerald-accent-hover transition-colors duration-300 tracking-tight"
                   >
@@ -69,14 +77,14 @@ import { FOOTER_NAVIGATION, LEGAL_LINKS } from '../../constants/landing'
         <div
           class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-8 md:gap-x-12 gap-y-6 font-medium uppercase tracking-[0.25em] text-muted-foreground-subtle text-center"
         >
-          <a
+          <RouterLink
             v-for="link in LEGAL_LINKS"
             :key="link.name"
-            :href="link.href"
+            :to="link.href"
             class="hover:text-foreground transition-colors"
           >
             {{ link.name }}
-          </a>
+          </RouterLink>
         </div>
       </div>
     </div>

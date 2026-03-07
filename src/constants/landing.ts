@@ -78,7 +78,6 @@ export const SHOWCASE_PRODUCTS: ProductProps[] = [
     primaryBtn: {
       text: 'Enter Vault',
       colorClass: 'bg-emerald-accent',
-      shadowClass: 'shadow-lg shadow-emerald-accent/20',
     },
     secondaryBtn: true,
   },
@@ -105,7 +104,6 @@ export const SHOWCASE_PRODUCTS: ProductProps[] = [
     primaryBtn: {
       text: 'Browse Palettes',
       colorClass: 'bg-blue-accent',
-      shadowClass: 'shadow-lg shadow-blue-accent/20',
     },
     secondaryBtn: true,
   },
@@ -132,7 +130,6 @@ export const SHOWCASE_PRODUCTS: ProductProps[] = [
     primaryBtn: {
       text: 'Manage Fonts',
       colorClass: 'bg-purple-accent',
-      shadowClass: 'shadow-lg shadow-purple-accent/20',
     },
     secondaryBtn: true,
   },
@@ -297,14 +294,20 @@ export const TESTIMONIALS = [
   },
 ]
 
+export const HEAD_NAVIGATION = [
+  { name: 'Features', href: '/#features' },
+  { name: 'Color Systems', href: '/#colors' },
+  { name: 'Asset Vault', href: '/#vault' },
+]
+
 export const FOOTER_NAVIGATION = [
   {
     title: 'Product',
     links: [
-      { name: 'Features', href: '#features' },
-      { name: 'Asset Vault', href: '#vault' },
-      { name: 'Typography', href: '#fonts' },
-      { name: 'Color Systems', href: '#colors' },
+      { name: 'Features', href: '/#features' },
+      { name: 'Asset Vault', href: '/#vault' },
+      { name: 'Typography', href: '/#fonts' },
+      { name: 'Color Systems', href: '/#colors' },
     ],
   },
   {
@@ -320,15 +323,15 @@ export const FOOTER_NAVIGATION = [
     title: 'Company',
     links: [
       { name: 'About Us', href: '#' },
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' },
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Terms of Service', href: '/terms' },
       { name: 'Contact Support', href: '#' },
     ],
   },
 ]
 
 export const LEGAL_LINKS = [
-  { name: 'Privacy Policy', href: '#' },
-  { name: 'Terms', href: '#' },
-  { name: 'Cookie Policy', href: '#' },
+  { name: 'Privacy Policy', href: '/privacy' },
+  { name: 'Terms', href: '/terms' },
+  { name: 'Cookie Policy', href: '/cookies' },
 ]

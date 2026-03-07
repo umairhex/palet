@@ -15,7 +15,7 @@ const config = computed(
 
 <template>
   <div
-    class="bg-background/85 rounded-3xl p-8 md:p-10 border border-white/5 shadow-2xl backdrop-blur-sm max-w-lg group"
+    class="bg-background/85 rounded-3xl p-8 md:p-10 border border-white/5 backdrop-blur-sm max-w-lg group"
   >
     <div class="flex items-center gap-3 mb-4">
       <div class="p-1.5 bg-white/10 rounded-lg">
@@ -32,7 +32,7 @@ const config = computed(
 
     <div class="flex flex-wrap gap-4 items-center">
       <Button
-        class="bg-emerald-accent hover:bg-emerald-accent-hover text-white rounded-full px-6 py-5 text-sm font-bold flex gap-2 shadow-lg shadow-emerald-accent/10"
+        class="bg-emerald-accent hover:bg-emerald-accent-hover text-white rounded-full px-6 py-5 text-sm font-bold flex gap-2"
       >
         {{ props.activeTab === 'Workspace' ? 'Go to Dashboard' : 'Start Building' }}
         <ArrowRight class="size-4" />

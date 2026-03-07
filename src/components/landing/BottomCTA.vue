@@ -19,7 +19,7 @@ import { ArrowRight } from 'lucide-vue-next'
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
         <button
-          class="w-full sm:w-auto flex items-center justify-center gap-3 bg-white text-foreground px-12 py-6 rounded-full text-lg transition-all hover:bg-emerald-accent hover:text-white hover:scale-105 active:scale-95 shadow-2xl shadow-emerald-accent/20 group"
+          class="w-full sm:w-auto flex items-center justify-center gap-3 bg-white text-foreground px-12 py-6 rounded-full text-lg transition-all hover:bg-emerald-accent hover:text-white hover:scale-105 active:scale-95 group"
         >
           Start For Free
           <ArrowRight class="size-6 transition-transform group-hover:translate-x-1" />

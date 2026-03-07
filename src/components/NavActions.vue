@@ -37,8 +37,8 @@ defineProps<{
     <Button
       :class="
         isMobile
-          ? 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 w-full justify-start gap-3 py-6 rounded-xl'
-          : 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 rounded-full px-6'
+          ? 'bg-primary hover:bg-primary/90 text-white w-full justify-start gap-3 py-6 rounded-xl'
+          : 'bg-primary hover:bg-primary/90 text-white rounded-full px-6'
       "
     >
       <Sparkles v-if="isMobile" class="size-4" />

@@ -3,7 +3,7 @@ import ProductCard from './ProductCard.vue'
 import { SHOWCASE_PRODUCTS } from '../../constants/landing'
 </script>
 <template>
-  <section class="w-full bg-white pt-16 pb-32 px-6 md:px-12">
+  <section id="features" class="w-full bg-white pt-16 pb-32 px-6 md:px-12">
     <div class="max-w-7xl mx-auto">
       <h2
         class="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground-muted leading-tight"

@@ -24,7 +24,6 @@ export interface ProductProps {
   primaryBtn: {
     text: string
     colorClass: string
-    shadowClass?: string
   }
   secondaryBtn?: boolean
 }
@@ -98,7 +97,7 @@ const imageContainerClass = computed(() =>
         >
           <div
             :class="[
-              'shrink-0 size-6 rounded-full flex items-center justify-center shadow-sm transition-transform duration-300 group-hover/feature:scale-110',
+              'shrink-0 size-6 rounded-full flex items-center justify-center transition-transform duration-300 group-hover/feature:scale-110',
               badge.colorClass,
             ]"
           >
@@ -127,7 +126,7 @@ const imageContainerClass = computed(() =>
         <button
           v-if="secondaryBtn"
           :class="[
-            'rounded-full border border-black/5 font-bold transition-all bg-white/40 hover:bg-white/60 active:scale-95 text-foreground shadow-sm',
+            'rounded-full border border-black/5 font-bold transition-all bg-white/40 hover:bg-white/60 active:scale-95 text-foreground',
             primaryBtnLayoutClass,
           ]"
         >
@@ -139,7 +138,7 @@ const imageContainerClass = computed(() =>
     <div :class="imageContainerClass">
       <div
         :class="[
-          'rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 h-full w-full',
+          'rounded-2xl overflow-hidden transition-transform duration-500 h-full w-full',
           image.transformClass,
         ]"
       >

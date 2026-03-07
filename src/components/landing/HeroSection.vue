@@ -9,6 +9,7 @@ const activeTab = ref<string>(HERO_TABS[0])
 
 <template>
   <section
+    id="vault"
     class="relative w-full min-h-[calc(100vh-60px)] flex items-center px-6 md:px-12 py-18 overflow-hidden"
   >
     <div

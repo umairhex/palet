@@ -23,7 +23,7 @@ defineProps<{
 <template>
   <div
     :class="[
-      'rounded-[3rem] p-12 md:p-16 border transition-all duration-700 shadow-2xl relative group',
+      'rounded-[3rem] p-12 md:p-16 border transition-all duration-700 relative group',
       palette.preview.bg,
       palette.preview.border,
     ]"
@@ -70,7 +70,7 @@ defineProps<{
       <div class="flex gap-4 pt-4">
         <div
           :class="[
-            'px-8 py-4 rounded-full text-sm transition-all duration-500 text-white shadow-xl',
+            'px-8 py-4 rounded-full text-sm transition-all duration-500 text-white',
             palette.preview.primary,
           ]"
         >

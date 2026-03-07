@@ -4,7 +4,7 @@ import { LANDING_RESOURCES } from '../../constants/landing'
 </script>
 
 <template>
-  <section class="w-full bg-background py-32 px-6 md:px-12 text-white">
+  <section id="fonts" class="w-full bg-background py-32 px-6 md:px-12 text-white">
     <div class="max-w-7xl mx-auto flex flex-col items-center">
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-24 max-w-3xl leading-tight">
         Resources to help you flow, grow & make progress.

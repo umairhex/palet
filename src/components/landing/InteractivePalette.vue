@@ -11,7 +11,10 @@ const selectPalette = (palette: (typeof INTERACTIVE_PALETTES)[0]) => {
 </script>
 
 <template>
-  <section class="w-full bg-impact-card py-32 px-6 md:px-12 text-foreground overflow-hidden">
+  <section
+    id="colors"
+    class="w-full bg-impact-card py-32 px-6 md:px-12 text-foreground overflow-hidden"
+  >
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
       <div class="space-y-12">
         <div class="space-y-6">
@@ -37,7 +40,7 @@ const selectPalette = (palette: (typeof INTERACTIVE_PALETTES)[0]) => {
               :class="[
                 'p-4 rounded-3xl border transition-all duration-500 group relative',
                 activePalette?.name === palette.name
-                  ? 'bg-background-muted border-subtle scale-105 shadow-2xl shadow-emerald-accent/10'
+                  ? 'bg-background-muted border-subtle scale-105'
                   : 'bg-transparent border-lighter hover:bg-background-muted',
               ]"
             >

@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { Menu, X } from 'lucide-vue-next'
 import Button from './ui/Button.vue'
 import NavActions from './NavActions.vue'
+import { HEAD_NAVIGATION } from '../constants/landing'
 
 const isAuthenticated = ref(false)
 const isMobileMenuOpen = ref(false)
@@ -17,8 +18,19 @@ const toggleMobileMenu = () => {
     class="sticky top-0 z-50 w-full bg-background border-b border-white/5 text-white px-6 md:px-12 py-4"
   >
     <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
-      <div class="flex items-center cursor-pointer">
+      <RouterLink to="/" class="flex items-center cursor-pointer">
         <h1 class="text-white text-2xl font-bold tracking-[0.2em]">PALET</h1>
+      </RouterLink>
+
+      <div class="hidden md:flex items-center gap-8">
+        <RouterLink
+          v-for="link in HEAD_NAVIGATION"
+          :key="link.name"
+          :to="link.href"
+          class="text-[10px] font- light tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors"
+        >
+          {{ link.name }}
+        </RouterLink>
       </div>
 
       <div class="hidden md:flex items-center gap-6">
@@ -43,8 +55,19 @@ const toggleMobileMenu = () => {
     >
       <div
         v-if="isMobileMenuOpen"
-        class="absolute top-full left-0 w-full bg-background border-b border-white/5 md:hidden py-6 px-6 flex flex-col gap-4 shadow-2xl"
+        class="absolute top-full left-0 w-full bg-background border-b border-white/5 md:hidden py-6 px-6 flex flex-col gap-4"
       >
+        <div class="flex flex-col gap-6 pt-4 pb-8 border-b border-white/5">
+          <RouterLink
+            v-for="link in HEAD_NAVIGATION"
+            :key="link.name"
+            :to="link.href"
+            @click="isMobileMenuOpen = false"
+            class="text-lg font-bold tracking-widest uppercase text-white/70 hover:text-white"
+          >
+            {{ link.name }}
+          </RouterLink>
+        </div>
         <NavActions :is-authenticated="isAuthenticated" :is-mobile="true" />
       </div>
     </Transition>

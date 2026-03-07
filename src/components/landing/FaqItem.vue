@@ -17,9 +17,7 @@ defineEmits<{
     @click="$emit('toggle')"
     :class="[
       'rounded-xl cursor-pointer transition-all duration-300 border',
-      isOpen
-        ? 'bg-white border-subtle shadow-sm p-8'
-        : 'bg-impact-card border-transparent px-8 py-6',
+      isOpen ? 'bg-white border-subtle p-8' : 'bg-impact-card border-transparent px-8 py-6',
     ]"
   >
     <div class="flex justify-between items-center gap-4">
