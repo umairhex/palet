@@ -1,39 +1,29 @@
 <script setup lang="ts">
 import '@/style.css'
-import { Github, Linkedin, Mail, Globe, Instagram, Twitter } from 'lucide-vue-next'
+import Navbar from './components/Navbar.vue'
+import HeroSection from './components/landing/HeroSection.vue'
+import UsageImpact from './components/landing/UsageImpact.vue'
+import ProductShowcase from './components/landing/ProductShowcase.vue'
+import InteractivePalette from './components/landing/InteractivePalette.vue'
+import ResourcesSection from './components/landing/ResourcesSection.vue'
+import TargetAudience from './components/landing/TargetAudience.vue'
+import FaqSection from './components/landing/FaqSection.vue'
+import TestimonialSection from './components/landing/TestimonialSection.vue'
+import BottomCTA from './components/landing/BottomCTA.vue'
+import FooterSection from './components/landing/FooterSection.vue'
 </script>
-
 <template>
-  <main class="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6">
-    <section class="max-w-3xl text-center space-y-10">
-      <div class="space-y-5">
-        <h1 class="text-5xl font-bold tracking-tight">PALET</h1>
-
-        <p class="text-neutral-400 text-lg leading-relaxed">
-          A minimal design asset manager for saving color palettes and font files. Upload
-          <code class="text-white">.ttf</code> fonts, organize palette tokens, and manage design
-          systems from one clean dashboard.
-        </p>
-      </div>
-
-      <div class="flex justify-center gap-4 flex-wrap">
-        <a
-          v-for="item in [
-            { href: 'mailto:umairnniazidev@gmail.com', icon: Mail },
-            { href: 'https://www.linkedin.com/in/umairhex', icon: Linkedin },
-            { href: 'https://github.com/umairhex', icon: Github },
-            { href: 'https://umairrx.dev', icon: Globe },
-            { href: 'https://www.instagram.com/umairhex', icon: Instagram },
-            { href: 'https://twitter.com/umairhex', icon: Twitter },
-          ]"
-          :key="item.href"
-          :href="item.href"
-          target="_blank"
-          class="w-12 h-12 rounded-full border border-neutral-700 flex items-center justify-center text-neutral-400 transition-all duration-300 hover:bg-white hover:text-black hover:scale-110 hover:border-white"
-        >
-          <component :is="item.icon" />
-        </a>
-      </div>
-    </section>
-  </main>
+  <div class="min-h-screen bg-dark-green overflow-x-hidden">
+    <Navbar />
+    <HeroSection />
+    <UsageImpact />
+    <ProductShowcase />
+    <InteractivePalette />
+    <ResourcesSection />
+    <TargetAudience />
+    <FaqSection />
+    <TestimonialSection />
+    <BottomCTA />
+    <FooterSection />
+  </div>
 </template>

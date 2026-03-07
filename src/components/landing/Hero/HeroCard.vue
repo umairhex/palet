@@ -1,0 +1,64 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+import { ArrowRight, PaintBucket, TypeIcon, Layout } from 'lucide-vue-next'
+import Button from '../../ui/Button.vue'
+
+const props = defineProps<{
+  activeTab: string
+}>()
+
+const featureConfig = {
+  Colours: {
+    title: 'Colour Palettes',
+    description:
+      'Store, organize, and preview your curated color collections. Access hex codes and visual references instantly from any project.',
+    icon: PaintBucket,
+  },
+  Fonts: {
+    title: 'Font Vault',
+    description:
+      'Upload and manage your custom typefaces. Preview weights and styles directly in the browser before downloading for local use.',
+    icon: TypeIcon,
+  },
+  Workspace: {
+    title: 'Unified Workspace',
+    description:
+      'Your central dashboard for all design assets. A persistent visual reference library that syncs across all your devices.',
+    icon: Layout,
+  },
+}
+
+const config = computed(() => featureConfig[props.activeTab as keyof typeof featureConfig])
+</script>
+
+<template>
+  <div
+    class="bg-card-bg rounded-3xl p-8 md:p-10 border border-white/5 shadow-2xl backdrop-blur-sm max-w-lg group"
+  >
+    <div class="flex items-center gap-3 mb-4">
+      <div class="p-1.5 bg-white/10 rounded-lg">
+        <component :is="config.icon" class="size-6 text-primary" />
+      </div>
+      <h3 class="text-xl md:text-2xl font-semibold tracking-tight">
+        {{ config.title }}
+      </h3>
+    </div>
+
+    <p class="text-sm md:text-base text-white/70 leading-relaxed mb-8">
+      {{ config.description }}
+    </p>
+
+    <div class="flex flex-wrap gap-4 items-center">
+      <Button
+        class="bg-emerald-accent hover:bg-emerald-accent-hover text-white rounded-full px-6 py-5 text-sm font-bold flex gap-2 shadow-lg shadow-emerald-accent/10"
+      >
+        {{ props.activeTab === 'Workspace' ? 'Go to Dashboard' : 'Start Building' }}
+        <ArrowRight class="size-4" />
+      </Button>
+      <button class="text-white/60 text-sm font-semibold flex items-center gap-2">
+        View Features
+        <ArrowRight class="size-4" />
+      </button>
+    </div>
+  </div>
+</template>
