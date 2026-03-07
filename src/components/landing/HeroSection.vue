@@ -15,12 +15,6 @@ const tabs = ['Colours', 'Fonts', 'Workspace'] as const
       class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full"
     >
       <div class="flex flex-col gap-6 md:gap-8 z-10">
-        <div
-          class="inline-flex max-w-max items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-medium text-xs tracking-wide uppercase"
-        >
-          <span class="flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-          100% Free • No Account Required
-        </div>
         <h1
           class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white"
         >

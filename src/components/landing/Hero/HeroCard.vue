@@ -60,7 +60,6 @@ const config = computed(() => featureConfig[props.activeTab as keyof typeof feat
           View Features
           <ArrowRight class="size-4" />
         </button>
-        <span class="text-white/40 text-xs mt-0.5">No login required to start</span>
       </div>
     </div>
   </div>

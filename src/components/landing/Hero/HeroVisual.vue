@@ -22,8 +22,8 @@
       <p class="text-white/40 text-sm font-medium tracking-wide italic">
         "Designed for persistence. Crafted for speed."
       </p>
-      <p class="text-white/20 text-xs uppercase tracking-[0.2em] font-bold">
-        Built with <span class="text-emerald-accent">✦</span> by
+      <p class="text-white/20 text-xs uppercase tracking-[0.2em] font-light">
+        Built by
         <span class="text-white/60 hover:text-white transition-colors cursor-pointer">Umair</span>
       </p>
     </div>

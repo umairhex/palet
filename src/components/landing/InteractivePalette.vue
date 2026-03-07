@@ -154,7 +154,7 @@ const selectPalette = (palette: (typeof palettes)[0]) => {
           <div class="flex gap-4 pt-4">
             <div
               :class="[
-                'px-8 py-4 rounded-full font-black text-sm transition-all duration-500 text-white shadow-xl',
+                'px-8 py-4 rounded-full text-sm transition-all duration-500 text-white shadow-xl',
                 activePalette.preview.primary,
               ]"
             >
@@ -162,7 +162,7 @@ const selectPalette = (palette: (typeof palettes)[0]) => {
             </div>
             <div
               :class="[
-                'px-8 py-4 rounded-full font-black text-sm border transition-all duration-500',
+                'px-8 py-4 rounded-full text-sm border transition-all duration-500',
                 activePalette.name === 'Modern Crisp'
                   ? 'border-slate-200 text-slate-800'
                   : 'border-white/10 text-white opacity-40',

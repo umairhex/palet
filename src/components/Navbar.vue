@@ -32,7 +32,7 @@ const toggleMobileMenu = () => {
           </Button>
         </template>
         <template v-else>
-          <Button variant="ghost" class="hover:text-primary">Login to Sync</Button>
+          <Button variant="ghost" class="hover:text-primary">Login</Button>
           <Button
             class="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-lg shadow-primary/20"
           >
@@ -71,7 +71,7 @@ const toggleMobileMenu = () => {
         </template>
         <template v-else>
           <Button variant="outline" class="w-full justify-start gap-3 py-6 border-white/10">
-            <LogIn class="size-4" /> Login to Sync
+            <LogIn class="size-4" /> Login
           </Button>
           <Button class="bg-primary w-full justify-start gap-3 py-6 rounded-xl">
             <Sparkles class="size-4" /> Get Started for Free
