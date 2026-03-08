@@ -34,15 +34,17 @@ defineProps<{
       <span v-else>Login</span>
       <template v-if="isMobile"> Login</template>
     </Button>
-    <Button
-      :class="
-        isMobile
-          ? 'bg-primary hover:bg-primary/90 text-white w-full justify-start gap-3 py-6 rounded-xl'
-          : 'bg-primary hover:bg-primary/90 text-white rounded-full px-6'
-      "
-    >
-      <Sparkles v-if="isMobile" class="size-4" />
-      Get Started for Free
-    </Button>
+    <RouterLink to="/generator">
+      <Button
+        :class="
+          isMobile
+            ? 'bg-primary hover:bg-primary/90 text-white w-full justify-start gap-3 py-6 rounded-xl'
+            : 'bg-primary hover:bg-primary/90 text-white rounded-full px-6'
+        "
+      >
+        <Sparkles v-if="isMobile" class="size-4" />
+        Get Started for Free
+      </Button>
+    </RouterLink>
   </template>
 </template>

@@ -298,6 +298,7 @@ export const HEAD_NAVIGATION = [
   { name: 'Features', href: '/#features' },
   { name: 'Color Systems', href: '/#colors' },
   { name: 'Asset Vault', href: '/#vault' },
+  { name: 'Dashboard', href: '/generator' },
 ]
 
 export const FOOTER_NAVIGATION = [

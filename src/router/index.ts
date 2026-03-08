@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import DashboardLayout from '../layouts/DashboardLayout.vue'
 import MainLayout from '../layouts/MainLayout.vue'
 
 const router = createRouter({
@@ -22,6 +23,27 @@ const router = createRouter({
           name: 'home',
           component: () => import('../views/HomeView.vue'),
         },
+      ],
+    },
+    {
+      path: '/',
+      component: DashboardLayout,
+      children: [
+        {
+          path: 'generator',
+          name: 'generator',
+          component: () => import('../views/GeneratorView.vue'),
+        },
+        {
+          path: 'palettes',
+          name: 'color-library',
+          component: () => import('../views/ColorLibraryView.vue'),
+        },
+        {
+          path: 'fonts',
+          name: 'font-vault',
+          component: () => import('../views/FontVaultView.vue'),
+        },
         {
           path: 'privacy',
           name: 'privacy',
@@ -38,6 +60,11 @@ const router = createRouter({
           component: () => import('../views/legal/CookiePolicyView.vue'),
         },
       ],
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue'),
     },
   ],
 })

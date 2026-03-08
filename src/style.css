@@ -1,13 +1,11 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Brand Constants */
   --color-background: #0b0f14;
   --color-card-bg: #1a2e26;
   --color-impact-card: #f4f7f2;
   --color-ui-dark: #0f2a22;
 
-  /* Neutrals / Slate Equivalents */
   --color-foreground: #0f172a;
   --color-foreground-muted: #1e293b;
   --color-foreground-lighter: #334155;
@@ -20,7 +18,6 @@
   --color-lighter: #f1f5f9;
   --color-background-muted: #f8fafc;
 
-  /* Core Palette */
   --color-primary: #f49a40;
   --color-primary-hover: #e08930;
   --color-primary-light: #fbbf24;

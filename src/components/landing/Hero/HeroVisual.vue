@@ -1,6 +1,4 @@
-<script setup lang="ts">
-// Minimal setup for the static visual component
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="relative flex flex-col gap-6">
