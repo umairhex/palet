@@ -122,7 +122,7 @@ const handleDownload = async () => {
         <div class="flex gap-1 shrink-0">
           <button
             @click="startEdit"
-            class="p-2 hover:bg-blue-50 hover:text-blue-500 text-gray-300 rounded-xl transition-all"
+            class="p-2 hover:bg-primary/10 hover:text-primary text-gray-300 rounded-xl transition-all"
             title="Edit"
           >
             <Edit2 class="size-3.5" />
@@ -137,7 +137,7 @@ const handleDownload = async () => {
           <button
             @click="handleDownload"
             :disabled="isDownloading"
-            class="p-2 hover:bg-blue-50 hover:text-blue-500 text-gray-300 rounded-xl transition-all disabled:opacity-50 disabled:cursor-wait"
+            class="p-2 hover:bg-primary/10 hover:text-primary text-gray-300 rounded-xl transition-all disabled:opacity-50 disabled:cursor-wait"
             title="Download"
           >
             <Loader v-if="isDownloading" class="size-3.5 animate-spin" />

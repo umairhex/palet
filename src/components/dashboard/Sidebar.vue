@@ -63,7 +63,7 @@ const handleSignOut = async () => {
             <img
               v-if="avatarUrl"
               :src="avatarUrl"
-              :alt="user.email?.split('@')[0] || 'User'"
+              :alt="user.user_metadata?.full_name || user.email?.split('@')[0] || 'User'"
               class="size-9 rounded-lg shadow-sm ring-1 ring-gray-200 object-cover shrink-0"
               referrerpolicy="no-referrer"
             />
@@ -75,7 +75,7 @@ const handleSignOut = async () => {
             </div>
             <div class="min-w-0">
               <p class="text-sm font-bold text-gray-900 truncate">
-                {{ user.email?.split('@')[0] || user.email }}
+                {{ user.user_metadata?.full_name || user.email?.split('@')[0] || user.email }}
               </p>
               <p class="text-[10px] text-gray-400 uppercase tracking-tighter">Signed In</p>
             </div>

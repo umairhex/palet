@@ -86,8 +86,8 @@ export const SHOWCASE_PRODUCTS: ProductProps[] = [
     badge: {
       text: 'Palette Library',
       icon: Palette,
-      colorClass: 'bg-blue-accent',
-      textClass: 'text-blue-accent',
+      colorClass: 'bg-primary',
+      textClass: 'text-primary',
     },
     title: 'Create & Store Multiple <br /> Project Color Systems',
     description:
@@ -100,10 +100,10 @@ export const SHOWCASE_PRODUCTS: ProductProps[] = [
     },
     gradientFrom: '#f0f4f9',
     gradientTo: '#edf2f7',
-    borderColor: 'border-blue-accent/10',
+    borderColor: 'border-primary/10',
     primaryBtn: {
       text: 'Browse Palettes',
-      colorClass: 'bg-blue-accent',
+      colorClass: 'bg-primary',
     },
     secondaryBtn: true,
   },

@@ -28,7 +28,7 @@ const toggleMobileMenu = () => {
           v-for="link in HEAD_NAVIGATION"
           :key="link.name"
           :to="link.href"
-          class="text-[10px] font-medium tracking-[0.2em] uppercase text-gray-800 hover:text-primary transition-colors"
+          class="text-[10px] font-medium tracking-[0.2em] uppercase text-gray-900 hover:text-primary transition-colors"
         >
           {{ link.name }}
         </RouterLink>

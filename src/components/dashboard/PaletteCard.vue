@@ -118,7 +118,7 @@ const executeDelete = () => {
         >
           <button
             @click="startEdit"
-            class="h-8 w-8 flex items-center justify-center hover:bg-blue-50 hover:text-blue-500 text-gray-400 rounded-xl transition-all"
+            class="h-8 w-8 flex items-center justify-center hover:bg-primary/10 hover:text-primary text-gray-400 rounded-xl transition-all"
             title="Rename"
           >
             <Edit2 class="size-3.5" />

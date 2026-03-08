@@ -3,6 +3,7 @@
 ## Vercel Deployment Setup
 
 ### Prerequisites
+
 - Vercel account
 - GitHub repository connected to Vercel
 - Supabase project
@@ -22,6 +23,7 @@ BASE_URL=https://your-domain.com
 ```
 
 **Where to find these values:**
+
 - **VITE_SUPABASE_URL**: Supabase Dashboard → Project Settings → API → Project URL
 - **VITE_SUPABASE_ANON_KEY**: Supabase Dashboard → Project Settings → API → anon/public key
 - **BASE_URL**: Your deployed domain (e.g., https://palet.umairrx.dev)
@@ -41,6 +43,7 @@ Your Supabase project must have the correct redirect URLs configured:
 ### Step 3: Deploy
 
 Once environment variables are set:
+
 1. Push your code to GitHub
 2. Vercel will automatically detect changes and deploy
 3. Or manually trigger a deployment from Vercel Dashboard
@@ -48,17 +51,20 @@ Once environment variables are set:
 ### Troubleshooting
 
 **Error: "OAuth callback - 404 NOT_FOUND"**
+
 - Verify redirect URLs are correctly configured in Supabase
 - Wait 2-3 minutes for Supabase settings to propagate
 - Check that auth token is present in URL hash
 
 **Authentication not working**
+
 - Check environment variables are set in Vercel project
 - Verify VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are correct
 - Clear browser cache and try again
 - Check browser console for errors
 
 **Build fails**
+
 - Ensure all dependencies are installed: `pnpm install`
 - Check TypeScript errors: `pnpm type-check`
 - Verify no linting issues: `pnpm lint`
@@ -74,6 +80,7 @@ BASE_URL=http://localhost:5173
 ```
 
 Then run:
+
 ```bash
 pnpm install
 pnpm dev
@@ -92,18 +99,21 @@ pnpm dev
 ## Database & Auth
 
 The application uses Supabase for:
+
 - Authentication (OAuth with Google)
 - Real-time database (color palettes, fonts)
 - File storage (font uploads)
 - Row-level security policies
 
 Make sure your Supabase project has:
+
 - Tables created and migrated
 - RLS policies configured
 - Storage buckets created
 - Auth providers configured (Google OAuth)
 
 For initial setup, run migrations:
+
 ```bash
 pnpm supabase migrate up
 ```

@@ -61,7 +61,15 @@ function _ensureListener() {
 export function useAuth() {
   const isAuthenticated = computed(() => _user.value !== null)
   const isAnonymous = computed(() => _user.value?.is_anonymous === true)
-  const avatarUrl = computed(() => (_user.value?.user_metadata?.avatar_url as string) ?? null)
+  const avatarUrl = computed<string | null>(() => {
+    const meta = _user.value?.user_metadata as Record<string, unknown> | undefined
+    return (meta?.avatar_url as string) ?? null
+  })
+  const displayName = computed<string | null>(() => {
+    if (!_user.value) return null
+    const meta = _user.value.user_metadata as Record<string, unknown> | undefined
+    return (meta?.full_name as string) || (_user.value.email?.split('@')[0] ?? null)
+  })
 
   onMounted(() => {
     _initAuth()
@@ -208,6 +216,7 @@ export function useAuth() {
     isAuthenticated,
     isAnonymous,
     avatarUrl,
+    displayName,
     initAuth: _initAuth,
     signUp,
     signIn,

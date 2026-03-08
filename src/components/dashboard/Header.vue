@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
 
 const router = useRouter()
-const { user, isAnonymous, avatarUrl } = useAuth()
+const { user, isAnonymous } = useAuth()
 const searchQuery = ref('')
 
 const onSearch = () => {
@@ -53,29 +53,6 @@ defineEmits<{
     </div>
 
     <div class="flex items-center gap-4 lg:gap-6">
-      <template v-if="user && !isAnonymous">
-        <div class="flex items-center gap-3 pl-4 border-l border-gray-100">
-          <div class="hidden md:block text-right">
-            <p class="text-sm font-bold text-gray-900">
-              {{ user.email?.split('@')[0] || 'User' }}
-            </p>
-            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Signed In</p>
-          </div>
-          <img
-            v-if="avatarUrl"
-            :src="avatarUrl"
-            :alt="user.email?.split('@')[0] || 'User'"
-            class="size-10 rounded-2xl shadow-sm ring-2 ring-gray-100 object-cover"
-            referrerpolicy="no-referrer"
-          />
-          <div
-            v-else
-            class="size-10 rounded-2xl shadow-sm ring-2 ring-gray-100 bg-linear-to-br from-primary to-primary/60 flex items-center justify-center text-white font-bold text-sm"
-          >
-            {{ user.email?.charAt(0).toUpperCase() || 'U' }}
-          </div>
-        </div>
-      </template>
       <template v-if="!user || isAnonymous">
         <div class="flex items-center gap-2 pl-4 border-l border-gray-100">
           <RouterLink

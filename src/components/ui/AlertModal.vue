@@ -38,7 +38,7 @@ const typeConfig = {
   },
   info: {
     icon: HelpCircle,
-    iconClass: 'bg-blue-100 text-blue-500',
+    iconClass: 'bg-primary/20 text-primary',
     btnClass: 'bg-primary hover:bg-primary-hover',
   },
   success: {

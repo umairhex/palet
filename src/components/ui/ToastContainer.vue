@@ -24,7 +24,7 @@ const { toasts, removeToast } = useToast()
             'bg-white border-gray-100 text-gray-900': toast.type === 'success',
             'bg-red-50 border-red-200 text-red-700': toast.type === 'error',
             'bg-yellow-50 border-yellow-200 text-yellow-700': toast.type === 'warning',
-            'bg-blue-50 border-blue-200 text-blue-700': toast.type === 'info',
+            'bg-primary/10 border-primary/20 text-primary': toast.type === 'info',
           }"
         >
           <div
@@ -33,7 +33,7 @@ const { toasts, removeToast } = useToast()
               'bg-emerald-100 text-emerald-600': toast.type === 'success',
               'bg-red-100 text-red-600': toast.type === 'error',
               'bg-yellow-100 text-yellow-600': toast.type === 'warning',
-              'bg-blue-100 text-blue-600': toast.type === 'info',
+              'bg-primary/20 text-primary/70': toast.type === 'info',
             }"
           >
             <Check v-if="toast.type === 'success'" class="size-4" />

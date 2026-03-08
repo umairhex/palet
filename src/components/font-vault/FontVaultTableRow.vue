@@ -71,7 +71,7 @@ const handleDownload = async () => {
         <button
           @click="handleDownload"
           :disabled="isDownloading"
-          class="p-2 hover:bg-blue-50 hover:text-blue-500 text-gray-400 rounded-xl disabled:opacity-50 disabled:cursor-wait"
+          class="p-2 hover:bg-primary/10 hover:text-primary text-gray-400 rounded-xl disabled:opacity-50 disabled:cursor-wait"
           title="Download"
         >
           <Loader v-if="isDownloading" class="size-4 animate-spin" />

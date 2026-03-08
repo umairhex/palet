@@ -25,7 +25,11 @@ const handleSignOut = async () => {
     <RouterLink to="/palettes">
       <Button
         :variant="isMobile ? 'outline' : 'ghost'"
-        :class="isMobile ? 'w-full justify-start gap-3 py-6' : 'gap-2'"
+        :class="
+          isMobile
+            ? 'w-full justify-start gap-3 py-6 text-gray-900'
+            : 'gap-2 text-gray-900 hover:text-primary'
+        "
       >
         <PaintBucket />
         <span>Colors</span>
@@ -34,7 +38,11 @@ const handleSignOut = async () => {
     <RouterLink to="/fonts">
       <Button
         :variant="isMobile ? 'outline' : 'ghost'"
-        :class="isMobile ? 'w-full justify-start gap-3 py-6' : 'gap-2'"
+        :class="
+          isMobile
+            ? 'w-full justify-start gap-3 py-6 text-gray-900'
+            : 'gap-2 text-gray-900 hover:text-primary'
+        "
       >
         <TypeIcon />
         <span>Fonts</span>
@@ -60,8 +68,8 @@ const handleSignOut = async () => {
         :variant="isMobile ? 'outline' : 'ghost'"
         :class="
           isMobile
-            ? 'w-full justify-start gap-3 py-6t text-black border-gray-200'
-            : 'text-black hover:text-primary'
+            ? 'w-full justify-start gap-3 py-6t text-gray-900 border-gray-200'
+            : 'text-gray-900 hover:text-primary'
         "
       >
         <span>Login</span>
