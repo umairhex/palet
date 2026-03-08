@@ -2,31 +2,44 @@
 import { watch, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
+import { supabase } from '@/lib/supabase'
 
 const router = useRouter()
 const { isAuthenticated, isAnonymous, isLoading, transferAnonymousData } = useAuth()
 const callbackError = ref<string | null>(null)
+
+onMounted(async () => {
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession()
+
+    if (session) {
+      await transferAnonymousData()
+      await router.replace('/generator')
+    } else {
+      setTimeout(() => {
+        if (!isAuthenticated.value) {
+          callbackError.value = 'Sign in timed out. Please try again.'
+        }
+      }, 5000)
+    }
+  } catch (err) {
+    console.error('ERROR: OAuth callback failed:', err)
+    callbackError.value = 'Sign in failed. Please try again.'
+  }
+})
 
 watch(
   [isAuthenticated, isAnonymous, isLoading],
   async ([authed, anon, loading]) => {
     if (!loading && authed && !anon) {
       await transferAnonymousData()
-
-      router.replace('/generator')
+      await router.replace('/generator')
     }
   },
   { immediate: true },
 )
-
-onMounted(() => {
-  setTimeout(() => {
-    if (!isAuthenticated.value || isAnonymous.value) {
-      console.error('ERROR: OAuth callback - session not established after timeout')
-      callbackError.value = 'Sign in timed out. Please try again.'
-    }
-  }, 10000)
-})
 </script>
 
 <template>
