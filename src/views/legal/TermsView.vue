@@ -12,7 +12,7 @@ import LegalLayout from '../../layouts/LegalLayout.vue'
     <p>
       These Terms of Service ("Terms") structure the legal agreement between you and Palet ("the
       Service", accessible at "palet.umairrx.dev", "we", "us") governing your access and usage of
-      the Palet application, its cloud interfaces, and offline persistence functionality.
+      the palet.umairrx.devlication, its cloud interfaces, and offline persistence functionality.
     </p>
 
     <h2>1. Intellectual Property & Acceptable Use</h2>

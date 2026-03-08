@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "run-p type-check \"build-only {@}\" -- && pnpm validate-seo",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
@@ -13,9 +13,15 @@
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
     "format": "prettier --write --experimental-cli src/",
+    "validate-seo": "node scripts/validate-seo.mjs",
     "prepare": "husky"
   },
   "dependencies": {
+    "@hcaptcha/vue3-hcaptcha": "^1.3.0",
+    "@supabase/supabase-js": "^2.98.0",
+    "@tanstack/vue-query": "^5.92.9",
+    "@unhead/schema-org": "^2.1.10",
+    "@unhead/vue": "^2.1.10",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "color-namer": "^1.4.0",
@@ -23,7 +29,8 @@
     "pinia": "^3.0.4",
     "tailwind-merge": "^3.5.0",
     "vue": "^3.5.29",
-    "vue-router": "4"
+    "vue-router": "4",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.1",

@@ -1,5 +1,20 @@
 <script setup lang="ts">
-import { Menu, X, Search, Bell, User } from 'lucide-vue-next'
+import { ref } from 'vue'
+import { Menu, X, Search } from 'lucide-vue-next'
+import { useRouter } from 'vue-router'
+import { useAuth } from '@/composables/useAuth'
+
+const router = useRouter()
+const { user, isAnonymous, avatarUrl } = useAuth()
+const searchQuery = ref('')
+
+const onSearch = () => {
+  const q = searchQuery.value.trim()
+  if (q) {
+    router.push({ path: '/palettes', query: { q } })
+    searchQuery.value = ''
+  }
+}
 
 defineProps<{
   isSidebarOpen: boolean
@@ -28,34 +43,49 @@ defineEmits<{
       >
         <Search class="size-4 text-gray-400 mr-2" />
         <input
+          v-model="searchQuery"
           type="text"
           placeholder="Search palettes or fonts..."
           class="bg-transparent border-none outline-none text-sm w-full text-gray-900 placeholder:text-gray-400"
+          @keydown.enter="onSearch"
         />
       </div>
     </div>
 
     <div class="flex items-center gap-4 lg:gap-6">
-      <button
-        class="relative p-2.5 text-gray-400 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all"
-      >
-        <Bell class="size-5" />
-        <span
-          class="absolute top-2.5 right-2.5 size-2 bg-primary rounded-full ring-2 ring-white"
-        ></span>
-      </button>
-
-      <div class="flex items-center gap-3 pl-4 border-l border-gray-100">
-        <div class="hidden md:block text-right">
-          <p class="text-sm font-bold text-gray-900">Alex Designer</p>
-          <p class="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Pro Plan</p>
+      <template v-if="user && !isAnonymous">
+        <div class="flex items-center gap-3 pl-4 border-l border-gray-100">
+          <div class="hidden md:block text-right">
+            <p class="text-sm font-bold text-gray-900">
+              {{ user.email?.split('@')[0] || 'User' }}
+            </p>
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Signed In</p>
+          </div>
+          <img
+            v-if="avatarUrl"
+            :src="avatarUrl"
+            :alt="user.email?.split('@')[0] || 'User'"
+            class="size-10 rounded-2xl shadow-sm ring-2 ring-gray-100 object-cover"
+            referrerpolicy="no-referrer"
+          />
+          <div
+            v-else
+            class="size-10 rounded-2xl shadow-sm ring-2 ring-gray-100 bg-linear-to-br from-primary to-primary/60 flex items-center justify-center text-white font-bold text-sm"
+          >
+            {{ user.email?.charAt(0).toUpperCase() || 'U' }}
+          </div>
         </div>
-        <div
-          class="size-10 rounded-2xl bg-linear-to-tr from-primary to-primary-light flex items-center justify-center text-white shadow-sm ring-2 ring-primary/10"
-        >
-          <User class="size-5" />
+      </template>
+      <template v-if="!user || isAnonymous">
+        <div class="flex items-center gap-2 pl-4 border-l border-gray-100">
+          <RouterLink
+            to="/signup"
+            class="px-4 py-2 bg-primary text-white text-sm font-medium rounded-xl hover:bg-primary/90 transition-colors"
+          >
+            Sign In & Sync
+          </RouterLink>
         </div>
-      </div>
+      </template>
     </div>
   </header>
 </template>

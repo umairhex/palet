@@ -1,39 +1,72 @@
 <script setup lang="ts">
-import { PaintBucket, TypeIcon, LogIn, Sparkles } from 'lucide-vue-next'
+import { PaintBucket, TypeIcon, Sparkles, LogOut } from 'lucide-vue-next'
 import Button from './ui/Button.vue'
+import { useAuth } from '@/composables/useAuth'
 
 defineProps<{
   isAuthenticated: boolean
   isMobile?: boolean
 }>()
+
+const { signOut, isAnonymous } = useAuth()
+
+const handleSignOut = async () => {
+  try {
+    await signOut()
+    window.location.href = '/'
+  } catch (err) {
+    console.error('Sign out failed:', err)
+  }
+}
 </script>
 
 <template>
-  <template v-if="isAuthenticated">
-    <Button
-      :variant="isMobile ? 'outline' : 'ghost'"
-      :class="isMobile ? 'w-full justify-start gap-3 py-6' : 'gap-2'"
-    >
-      <PaintBucket />
-      <span>Colors</span>
-    </Button>
-    <Button
-      :variant="isMobile ? 'outline' : 'ghost'"
-      :class="isMobile ? 'w-full justify-start gap-3 py-6' : 'gap-2'"
-    >
-      <TypeIcon />
-      <span>Fonts</span>
-    </Button>
+  <template v-if="isAuthenticated && !isAnonymous">
+    <RouterLink to="/palettes">
+      <Button
+        :variant="isMobile ? 'outline' : 'ghost'"
+        :class="isMobile ? 'w-full justify-start gap-3 py-6' : 'gap-2'"
+      >
+        <PaintBucket />
+        <span>Colors</span>
+      </Button>
+    </RouterLink>
+    <RouterLink to="/fonts">
+      <Button
+        :variant="isMobile ? 'outline' : 'ghost'"
+        :class="isMobile ? 'w-full justify-start gap-3 py-6' : 'gap-2'"
+      >
+        <TypeIcon />
+        <span>Fonts</span>
+      </Button>
+    </RouterLink>
+    <button @click="handleSignOut" :class="isMobile ? 'w-full' : ''">
+      <Button
+        :variant="isMobile ? 'outline' : 'ghost'"
+        :class="
+          isMobile
+            ? 'w-full justify-start gap-3 py-6 text-red-600 hover:text-red-700'
+            : 'text-red-600 hover:text-red-700 gap-2'
+        "
+      >
+        <LogOut class="size-4" />
+        <span>{{ isMobile ? 'Sign Out' : '' }}</span>
+      </Button>
+    </button>
   </template>
   <template v-else>
-    <Button
-      :variant="isMobile ? 'outline' : 'ghost'"
-      :class="isMobile ? 'w-full justify-start gap-3 py-6 border-white/10' : 'hover:text-primary'"
-    >
-      <LogIn v-if="isMobile" class="size-4" />
-      <span v-else>Login</span>
-      <template v-if="isMobile"> Login</template>
-    </Button>
+    <RouterLink to="/login">
+      <Button
+        :variant="isMobile ? 'outline' : 'ghost'"
+        :class="
+          isMobile
+            ? 'w-full justify-start gap-3 py-6t text-black border-gray-200'
+            : 'text-black hover:text-primary'
+        "
+      >
+        <span>Login</span>
+      </Button>
+    </RouterLink>
     <RouterLink to="/generator">
       <Button
         :class="

@@ -1,4 +1,5 @@
 import { hexToRGB, rgbToOKLab, labToLCH, lchToLab, oklabToRGB, rgbToHex } from './conversions'
+import { getContrastRatio } from './accessibility'
 import type { LCH } from './conversions'
 
 export type HarmonyMode =
@@ -71,20 +72,7 @@ export function generateScale(baseHex: string, steps: number = 11): string[] {
   return colors
 }
 
-export function getContrastRatio(hex1: string, hex2: string): number {
-  const getLum = (hex: string) => {
-    const { r, g, b } = hexToRGB(hex)
-    const rl = (c: number) =>
-      c / 255 <= 0.03928 ? c / 255 / 12.92 : Math.pow((c / 255 + 0.055) / 1.055, 2.4)
-    return 0.2126 * rl(r) + 0.7152 * rl(g) + 0.0722 * rl(b)
-  }
-
-  const l1 = getLum(hex1)
-  const l2 = getLum(hex2)
-  const lighter = Math.max(l1, l2)
-  const darker = Math.min(l1, l2)
-  return (lighter + 0.05) / (darker + 0.05)
-}
+export { getContrastRatio }
 
 export function adjustColor(
   hex: string,

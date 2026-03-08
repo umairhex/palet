@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useAuth } from '@/composables/useAuth'
 import Sidebar from '../components/dashboard/Sidebar.vue'
 import Header from '../components/dashboard/Header.vue'
 
-const isSidebarOpen = ref(false)
+const { isLoading } = useAuth()
 
+const isSidebarOpen = ref(false)
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value
 }
 </script>
 
 <template>
+  <div v-if="isLoading" class="h-screen flex items-center justify-center bg-background text-white">
+    <div class="animate-pulse text-lg font-bold tracking-widest">PALET</div>
+  </div>
+
   <div
+    v-else
     class="h-screen bg-background text-foreground flex overflow-hidden"
     :style="{ '--sidebar-width': '14rem' }"
   >

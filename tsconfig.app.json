@@ -1,5 +1,4 @@
 {
-  // explicitly reference the installed package files to satisfy editors/tsc
   "extends": "./node_modules/@vue/tsconfig/tsconfig.dom.json",
   "include": [
     "env.d.ts",

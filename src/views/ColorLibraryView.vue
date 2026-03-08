@@ -1,17 +1,87 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Plus, Search, Filter, X } from 'lucide-vue-next'
+import { ref, computed, onMounted } from 'vue'
+import { Plus, Search, PaintBucket, Upload } from 'lucide-vue-next'
+import { useRoute } from 'vue-router'
 import Button from '../components/ui/Button.vue'
 import PaletteCard from '../components/dashboard/PaletteCard.vue'
 import ColorGenerator from '../components/dashboard/ColorGenerator.vue'
-import { usePaletteStore } from '../stores/palette'
+import { usePalettes } from '../composables/usePalettes'
+import { useToast } from '../composables/useToast'
+import { importFromJSON } from '../utils/paletteExport'
+import Modal from '../components/ui/Modal.vue'
 
-const store = usePaletteStore()
+import { useCollectionSearch } from '../composables/useCollectionSearch'
+import type { Palette } from '../composables/usePalettes'
+
+const route = useRoute()
+const { palettes, savePalette, deletePalette, duplicatePalette, allTags } = usePalettes()
+const { toast } = useToast()
 const isGeneratorOpen = ref(false)
+const fileInput = ref<HTMLInputElement | null>(null)
+
+const {
+  searchQuery,
+  activeCategory: activeTag,
+  sortBy,
+  filteredItems: filteredPalettes,
+} = useCollectionSearch(palettes, {
+  searchFields: ['name', 'colors', 'tags'],
+  categoryField: 'tags',
+  allCategoryLabel: 'All',
+  defaultSort: 'modified',
+  sortStrategies: {
+    name: (a: Palette, b: Palette) => a.name.localeCompare(b.name),
+    created: (a: Palette, b: Palette) =>
+      new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+    modified: (a: Palette, b: Palette) =>
+      new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+  },
+})
+
+onMounted(() => {
+  if (route.query.q) {
+    searchQuery.value = String(route.query.q)
+  }
+})
+
+const tagList = computed(() => ['All', ...allTags.value])
 
 const handleSave = (newPalette: { name: string; colors: string[] }) => {
-  store.savePalette(newPalette.name, newPalette.colors)
+  savePalette(newPalette.name, newPalette.colors)
   isGeneratorOpen.value = false
+  toast('Palette created!', 'success')
+}
+
+const handleDelete = (id: number) => {
+  deletePalette(id)
+  toast('Palette deleted', 'success')
+}
+
+const handleDuplicate = (id: number) => {
+  duplicatePalette(id)
+  toast('Palette duplicated', 'success')
+}
+
+const handleFileInput = async (e: Event) => {
+  const input = e.target as HTMLInputElement
+  const file = input.files?.[0]
+  if (!file) return
+
+  try {
+    const content = await file.text()
+    const imported = importFromJSON(content)
+
+    if (imported) {
+      savePalette(imported.name, imported.colors)
+      toast(`Imported "${imported.name}"!`, 'success')
+    } else {
+      toast('Invalid palette file format', 'error')
+    }
+  } catch {
+    toast('Failed to import palette', 'error')
+  }
+
+  input.value = ''
 }
 </script>
 
@@ -28,36 +98,55 @@ const handleSave = (newPalette: { name: string; colors: string[] }) => {
             class="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-gray-400 group-focus-within:text-primary transition-colors"
           />
           <input
+            v-model="searchQuery"
             type="text"
             placeholder="Search palettes..."
             class="h-12 w-64 pl-11 pr-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary/30 transition-all"
           />
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <input
+            ref="fileInput"
+            type="file"
+            accept=".json"
+            class="hidden"
+            @change="handleFileInput"
+          />
+          <Button
+            @click="fileInput?.click()"
+            class="bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-2xl px-6 h-12 font-bold gap-2"
+          >
+            <Upload class="size-5" />
+            <span class="hidden sm:inline">Import</span>
+          </Button>
+          <select
+            v-model="sortBy"
+            class="h-12 px-4 bg-gray-50 border border-gray-200 rounded-2xl text-xs font-bold uppercase tracking-widest text-gray-600 hover:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer transition-all"
+          >
+            <option value="modified">Edited (Latest)</option>
+            <option value="created">Created (Oldest)</option>
+            <option value="name">Name (A-Z)</option>
+          </select>
         </div>
         <Button
           @click="isGeneratorOpen = true"
           class="bg-primary hover:bg-primary-hover text-white rounded-2xl px-6 h-12 font-bold shadow-lg shadow-primary/20 gap-2 w-full sm:w-auto"
         >
           <Plus class="size-5" />
-          New Palette
+          <span class="hidden sm:inline">New Palette</span>
+          <span class="sm:hidden">New</span>
         </Button>
       </div>
     </div>
 
     <div class="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-hide">
-      <Button
-        variant="outline"
-        class="h-9 px-4 rounded-full border-gray-200 text-xs font-bold uppercase tracking-widest bg-white hover:bg-gray-50 text-gray-900 gap-2 shrink-0"
-      >
-        <Filter class="size-3.5" />
-        Filters
-      </Button>
-      <div class="h-4 w-px bg-gray-200 mx-2"></div>
       <button
-        v-for="tag in ['All', 'Brand', 'Nature', 'Ui', 'Tech', 'Marketing']"
+        v-for="tag in tagList"
         :key="tag"
+        @click="activeTag = tag"
         class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-all border border-transparent"
         :class="
-          tag === 'All'
+          tag === activeTag
             ? 'bg-primary/10 text-primary border-primary/20'
             : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'
         "
@@ -66,25 +155,43 @@ const handleSave = (newPalette: { name: string; colors: string[] }) => {
       </button>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-      <PaletteCard v-for="palette in store.palettes" :key="palette.id" :palette="palette" />
+    <div
+      v-if="filteredPalettes.length"
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+    >
+      <PaletteCard
+        v-for="palette in filteredPalettes"
+        :key="palette.id"
+        :palette="palette"
+        @delete="handleDelete"
+        @duplicate="handleDuplicate"
+      />
     </div>
 
-    <div
-      v-if="isGeneratorOpen"
-      class="fixed inset-0 z-100 flex items-center justify-center p-6 bg-gray-900/60 backdrop-blur-md animate-in fade-in duration-300"
-    >
-      <div
-        class="w-full max-w-2xl relative animate-in zoom-in-95 slide-in-from-bottom-8 duration-500"
-      >
-        <button
-          @click="isGeneratorOpen = false"
-          class="absolute -top-12 right-0 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-all"
-        >
-          <X class="size-6" />
-        </button>
-        <ColorGenerator @save="handleSave" />
+    <div v-else class="flex flex-col items-center justify-center py-24 text-center">
+      <div class="size-20 bg-gray-50 rounded-3xl flex items-center justify-center mb-6">
+        <PaintBucket class="size-10 text-gray-300" />
       </div>
+      <h3 class="text-xl font-black text-gray-900 mb-2">No palettes found</h3>
+      <p class="text-sm text-gray-400 max-w-sm mb-8">
+        {{
+          searchQuery || activeTag !== 'All'
+            ? 'Try adjusting your search or filters.'
+            : 'Create your first palette to get started.'
+        }}
+      </p>
+      <Button
+        v-if="!searchQuery && activeTag === 'All'"
+        @click="isGeneratorOpen = true"
+        class="bg-primary hover:bg-primary-hover text-white rounded-2xl px-8 h-12 font-bold shadow-lg shadow-primary/20 gap-2"
+      >
+        <Plus class="size-5" />
+        Create Palette
+      </Button>
     </div>
+
+    <Modal :show="isGeneratorOpen" @close="isGeneratorOpen = false">
+      <ColorGenerator @save="handleSave" />
+    </Modal>
   </div>
 </template>

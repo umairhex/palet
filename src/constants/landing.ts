@@ -312,21 +312,10 @@ export const FOOTER_NAVIGATION = [
     ],
   },
   {
-    title: 'Resources',
-    links: [
-      { name: 'Documentation', href: '#' },
-      { name: 'Design Guides', href: '#' },
-      { name: 'API Reference', href: '#' },
-      { name: 'Community', href: '#' },
-    ],
-  },
-  {
     title: 'Company',
     links: [
-      { name: 'About Us', href: '#' },
       { name: 'Privacy Policy', href: '/privacy' },
       { name: 'Terms of Service', href: '/terms' },
-      { name: 'Contact Support', href: '#' },
     ],
   },
 ]

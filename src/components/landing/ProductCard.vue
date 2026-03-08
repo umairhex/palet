@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, type Component } from 'vue'
+import { RouterLink } from 'vue-router'
 import { CheckCircle2, ArrowUpRight } from 'lucide-vue-next'
 
 export interface ProductProps {
@@ -110,28 +111,31 @@ const imageContainerClass = computed(() =>
       </div>
 
       <div class="flex items-center gap-4 pt-4">
-        <button
-          :class="[
-            'rounded-full text-white font-bold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 group',
-            primaryBtnLayoutClass,
-            primaryBtn.colorClass,
-          ]"
-        >
-          {{ primaryBtn.text }}
-          <ArrowUpRight
-            class="size-4 md:size-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
-        </button>
+        <RouterLink :to="badge.text === 'Personalized Font Vault' ? '/fonts' : '/generator'">
+          <button
+            :class="[
+              'rounded-full text-white font-bold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 group',
+              primaryBtnLayoutClass,
+              primaryBtn.colorClass,
+            ]"
+          >
+            {{ primaryBtn.text }}
+            <ArrowUpRight
+              class="size-4 md:size-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </button>
+        </RouterLink>
 
-        <button
-          v-if="secondaryBtn"
-          :class="[
-            'rounded-full border border-black/5 font-bold transition-all bg-white/40 hover:bg-white/60 active:scale-95 text-foreground',
-            primaryBtnLayoutClass,
-          ]"
-        >
-          Learn more
-        </button>
+        <a href="#features" v-if="secondaryBtn">
+          <button
+            :class="[
+              'rounded-full border border-black/5 font-bold transition-all bg-white/40 hover:bg-white/60 active:scale-95 text-foreground h-full',
+              primaryBtnLayoutClass,
+            ]"
+          >
+            Learn more
+          </button>
+        </a>
       </div>
     </div>
 

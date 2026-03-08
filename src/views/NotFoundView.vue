@@ -26,7 +26,7 @@ const goBack = () => {
         </div>
 
         <p
-          class="text-foreground/50 text-sm font-bold uppercase tracking-widest leading-relaxed max-w-[280px] mx-auto"
+          class="text-foreground/50 text-sm font-bold uppercase tracking-widest leading-relaxed max-w-70 mx-auto"
         >
           The asset you're looking for doesn't exist.
         </p>

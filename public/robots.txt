@@ -1,0 +1,28 @@
+# Robots.txt for Palet - 2026 SEO Best Practices
+# https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+Disallow: /auth/
+Disallow: /admin/
+Disallow: /.well-known/
+
+# Google-specific rules
+User-agent: Googlebot
+Allow: /
+
+# Bing-specific rules
+User-agent: Bingbot
+Allow: /
+
+# Specific crawl delays
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://palet.umairrx.dev/sitemap.xml
+Sitemap: https://palet.umairrx.dev/sitemap-pages.xml
+
+# Avoid crawling common query parameters
+Disallow: /*?*
+Allow: /*?sort=
+Allow: /*?filter=

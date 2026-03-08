@@ -11,7 +11,7 @@ defineProps<{
 
 <template>
   <div
-    class="bg-white border border-gray-200 p-6 rounded-4xl hover:shadow-2xl hover:shadow-gray-200/60 hover:border-primary/30 transition-all duration-300 group"
+    class="bg-white border border-gray-200 p-6 rounded-4xl hover:border-primary/30 transition-all duration-300 group"
   >
     <div class="flex items-center justify-between mb-5">
       <div

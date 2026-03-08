@@ -2,9 +2,7 @@
 
 <template>
   <div class="w-full h-full bg-white text-foreground">
-    <div
-      class="w-full max-w-4xl mx-auto px-6 md:px-12 py-20 md:py-32 prose prose-lg md:prose-xl prose-emerald"
-    >
+    <div class="w-full prose-emerald">
       <slot />
     </div>
   </div>

@@ -1,97 +1,147 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Check, Copy, MoreHorizontal, Edit2, Trash2 } from 'lucide-vue-next'
+import { Check, Edit2, Trash2, X } from 'lucide-vue-next'
+import { usePalettes, formatTimeAgo } from '../../composables/usePalettes'
+import type { Palette } from '../../composables/usePalettes'
 
-interface Palette {
-  id: number
-  name: string
-  colors: string[]
-  updatedAt: string
-  tags: string[]
-}
+import PaletteColorStrip from './PaletteColorStrip.vue'
+import PaletteMenu from './PaletteMenu.vue'
+import AlertModal from '../ui/AlertModal.vue'
 
-defineProps<{
+const props = defineProps<{
   palette: Palette
 }>()
 
-const copiedColor = ref<string | null>(null)
+const emit = defineEmits<{
+  (e: 'delete', id: number): void
+  (e: 'duplicate', id: number): void
+}>()
 
-const copyToClipboard = (color: string) => {
-  navigator.clipboard.writeText(color)
-  copiedColor.value = color
-  setTimeout(() => {
-    copiedColor.value = null
-  }, 2000)
+const { updatePalette } = usePalettes()
+
+const isEditing = ref(false)
+const editName = ref('')
+const showDeleteConfirm = ref(false)
+
+const startEdit = () => {
+  editName.value = props.palette.name
+  isEditing.value = true
+}
+
+const saveEdit = () => {
+  if (editName.value.trim()) {
+    updatePalette(props.palette.id, { name: editName.value.trim() })
+  }
+  isEditing.value = false
+}
+
+const cancelEdit = () => {
+  isEditing.value = false
+}
+
+const executeDelete = () => {
+  emit('delete', props.palette.id)
+  showDeleteConfirm.value = false
 }
 </script>
 
 <template>
   <div
-    class="group bg-white border border-gray-200 rounded-[2.5rem] overflow-hidden hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.1)] hover:border-primary/30 transition-all duration-500"
+    class="palette-card group bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-primary/30 duration-300"
   >
-    <div class="h-40 flex p-4 gap-2 bg-gray-50 relative">
-      <div
-        v-for="color in palette.colors"
-        :key="color"
-        class="flex-1 h-full rounded-2xl relative group/color flex items-center justify-center transition-all duration-300 hover:flex-[1.5] shadow-sm active:scale-95 cursor-pointer"
-        :style="{ backgroundColor: color }"
-        @click="copyToClipboard(color)"
-      >
-        <div
-          class="absolute inset-x-0 bottom-0 p-2 opacity-0 group-hover/color:opacity-100 transition-opacity bg-black/20 backdrop-blur-sm rounded-b-2xl"
-        >
-          <p class="text-[10px] font-black text-white text-center uppercase tracking-widest">
-            {{ color }}
-          </p>
-        </div>
-        <Check v-if="copiedColor === color" class="text-white size-6 drop-shadow-md" />
-        <Copy
-          v-else
-          class="text-white opacity-0 group-hover/color:opacity-100 size-5 transition-opacity drop-shadow-md"
-        />
-      </div>
-    </div>
+    <PaletteColorStrip :colors="palette.colors" />
 
-    <div class="p-8">
-      <div class="flex items-start justify-between mb-6">
-        <div>
-          <h3
-            class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors cursor-pointer mb-1"
+    <div class="p-4 sm:p-5">
+      <div class="flex items-center gap-2 mb-3 min-w-0">
+        <template v-if="isEditing">
+          <input
+            v-model="editName"
+            type="text"
+            class="flex-1 min-w-0 h-9 px-3 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            @keydown.enter="saveEdit"
+            @keydown.escape="cancelEdit"
+            autofocus
+          />
+          <button
+            @click="saveEdit"
+            class="shrink-0 h-9 w-9 flex items-center justify-center bg-primary text-white rounded-xl hover:bg-primary/90 transition-all"
+            title="Save"
           >
-            {{ palette.name }}
-          </h3>
-          <p class="text-xs text-gray-400 font-medium italic">Edited {{ palette.updatedAt }}</p>
-        </div>
-        <button
-          class="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-400 hover:text-gray-600"
-        >
-          <MoreHorizontal class="size-5" />
-        </button>
+            <Check class="size-4" />
+          </button>
+          <button
+            @click="cancelEdit"
+            class="shrink-0 h-9 w-9 flex items-center justify-center bg-gray-100 text-gray-400 rounded-xl hover:bg-gray-200 transition-all"
+            title="Cancel"
+          >
+            <X class="size-4" />
+          </button>
+        </template>
+
+        <template v-else>
+          <div class="flex-1 min-w-0">
+            <h3
+              class="text-base sm:text-lg font-bold text-gray-900 group-hover:text-primary transition-colors cursor-pointer truncate"
+              @click="startEdit"
+              :title="palette.name"
+            >
+              {{ palette.name }}
+            </h3>
+            <p class="text-[11px] text-gray-400 font-medium mt-0.5">
+              Edited {{ formatTimeAgo(palette.updatedAt) }}
+            </p>
+          </div>
+
+          <PaletteMenu
+            :palette="palette"
+            @start-edit="startEdit"
+            @duplicate="$emit('duplicate', palette.id)"
+            @delete="showDeleteConfirm = true"
+          />
+        </template>
       </div>
 
-      <div class="flex items-center justify-between mt-auto">
-        <div class="flex gap-2">
+      <div class="flex items-center justify-between gap-2 flex-wrap">
+        <div class="flex gap-1.5 flex-wrap">
           <span
             v-for="tag in palette.tags"
             :key="tag"
-            class="text-[9px] font-black uppercase tracking-widest text-gray-400 border border-gray-100 px-2.5 py-1 rounded-lg"
+            class="text-[9px] font-black uppercase tracking-widest text-gray-400 border border-gray-100 px-2 py-1 rounded-lg"
           >
             {{ tag }}
           </span>
         </div>
-        <div class="flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+
+        <div
+          v-if="!isEditing"
+          class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity"
+        >
           <button
-            class="p-2.5 hover:bg-blue-50 hover:text-blue-500 text-gray-400 rounded-xl transition-all"
+            @click="startEdit"
+            class="h-8 w-8 flex items-center justify-center hover:bg-blue-50 hover:text-blue-500 text-gray-400 rounded-xl transition-all"
+            title="Rename"
           >
-            <Edit2 class="size-4" />
+            <Edit2 class="size-3.5" />
           </button>
           <button
-            class="p-2.5 hover:bg-red-50 hover:text-red-500 text-gray-400 rounded-xl transition-all"
+            @click="showDeleteConfirm = true"
+            class="h-8 w-8 flex items-center justify-center hover:bg-red-50 hover:text-red-500 text-gray-400 rounded-xl transition-all"
+            title="Delete"
           >
-            <Trash2 class="size-4" />
+            <Trash2 class="size-3.5" />
           </button>
         </div>
       </div>
     </div>
+
+    <AlertModal
+      :show="showDeleteConfirm"
+      title="Delete Palette?"
+      :message="`Are you sure you want to delete <strong>${palette.name}</strong>? This action cannot be undone.`"
+      type="danger"
+      confirm-text="Delete"
+      @close="showDeleteConfirm = false"
+      @confirm="executeDelete"
+    />
   </div>
 </template>

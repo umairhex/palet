@@ -48,11 +48,12 @@ import { LANDING_RESOURCES } from '../../constants/landing'
             <p class="text-white/60 text-lg leading-relaxed max-w-md">
               {{ resource.description }}
             </p>
-            <button
+            <RouterLink
+              :to="index === 0 ? '/generator' : '/fonts'"
               class="flex items-center gap-2 border border-white/20 rounded-full px-8 py-4 font-bold text-sm transition-all hover:bg-white/5"
             >
               {{ resource.buttonText }} <ArrowRight class="size-4" />
-            </button>
+            </RouterLink>
           </div>
         </div>
       </div>
