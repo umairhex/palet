@@ -20,6 +20,22 @@ A designer opens Palet, immediately starts generating palettes using advanced co
 
 ---
 
+## Tech Stack
+
+- **Frontend**: Vue 3, Vite, TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: Pinia
+- **Backend/Database**: Supabase (PostgreSQL, Storage, Auth)
+- **Data Fetching**: TanStack Vue Query
+- **UI Components**: Lucide Vue, Class Variance Authority
+- **Color Science**: Color Namer
+- **Form Validation**: Zod
+- **SEO**: Unhead
+- **Bot Protection**: hCaptcha
+- **Cloud Storage**: Supabase Storage
+
+---
+
 ## Key Features
 
 ### Color Palette Generator
